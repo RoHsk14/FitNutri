@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { ReactNode, useState, useEffect } from "react"
 import clsx from "clsx"
 
@@ -76,6 +76,7 @@ function isParentActive(item: NavItem, pathname: string): boolean {
 
 export function Sidebar({ children }: { children: ReactNode }) {
   const pathname = usePathname()
+  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
 
@@ -169,6 +170,7 @@ export function Sidebar({ children }: { children: ReactNode }) {
                     if (hasChildren) {
                       toggleExpand(item.href)
                     } else {
+                      router.push(item.href)
                       setMobileOpen(false)
                     }
                   }}
