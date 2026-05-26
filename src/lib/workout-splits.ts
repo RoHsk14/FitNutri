@@ -149,104 +149,359 @@ const GENDER_SPLITS: Record<string, Record<string, WorkoutSplitTemplate>> = {
       ],
     },
   },
-  FEMALE: {
+}
+
+const FEMALE_GOAL_SPLITS: Record<string, Record<string, WorkoutSplitTemplate>> = {
+  GAIN_MUSCLE: {
     BEGINNER: {
-      title: "Full Body",
+      title: "Full Body (bas du corps prioritaire)",
       sessions: [
         {
-          day: 1, label: "Full Body A",
+          day: 1, label: "Full Body A - Jambes lourdes",
           targets: [
-            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
-            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
-            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
-            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["CABLE"] },
-            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 30, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND", equipment: ["DUMBBELL"] },
+            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND", equipment: ["CABLE"] },
           ],
         },
         {
-          day: 3, label: "Full Body B",
+          day: 3, label: "Full Body B - Fessiers + Dos",
           targets: [
-            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["MACHINE", "BARBELL"] },
-            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
-            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["BODYWEIGHT", "DUMBBELL"] },
-            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["BARBELL"] },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 90, mechanics: "ISOLATION", equipment: ["BARBELL"] },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 4, reps: 10, restSeconds: 60, mechanics: "ISOLATION" },
+            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["MACHINE"] },
+            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
             { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
           ],
         },
         {
-          day: 5, label: "Full Body C",
+          day: 5, label: "Full Body C - Jambes + Épaules",
           targets: [
-            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "ISOLATION", equipment: ["BARBELL"] },
-            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 4, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
             { primaryMuscle: "Shoulders", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
-            { primaryMuscle: "Biceps", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
+            { primaryMuscle: "Calves", count: 1, sets: 4, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
           ],
         },
       ],
     },
     INTERMEDIATE: {
-      title: "Upper / Lower (4j)",
+      title: "Lower / Upper (3j bas + 1j haut)",
       sessions: [
         {
-          day: 1, label: "Lower A (Jambes + Fessiers)",
+          day: 1, label: "Lower A - Quadriceps + Fessiers",
           targets: [
-            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 60 },
-            { primaryMuscle: "Quadriceps", count: 1, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
-            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
-            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 10, restSeconds: 90 },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Calves", count: 1, sets: 4, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
           ],
         },
         {
-          day: 2, label: "Upper A (Pousser)",
+          day: 2, label: "Haut du corps - Pousser",
           targets: [
-            { primaryMuscle: "Pectoraux", count: 2, sets: 4, reps: 10, restSeconds: 60, mechanics: "COMPOUND" },
+            { primaryMuscle: "Pectoraux", count: 2, sets: 4, reps: 10, restSeconds: 60 },
             { primaryMuscle: "Shoulders", count: 2, sets: 3, reps: 12, restSeconds: 60 },
-            { primaryMuscle: "Triceps", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Triceps", count: 2, sets: 3, reps: 12, restSeconds: 45 },
           ],
         },
         {
-          day: 4, label: "Lower B (Jambes + Fessiers)",
+          day: 4, label: "Lower B - Fessiers + Ischios",
           targets: [
-            { primaryMuscle: "Hamstrings", count: 1, sets: 4, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
-            { primaryMuscle: "Quadriceps", count: 3, sets: 3, reps: 12, restSeconds: 90 },
-            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Glutes", count: 3, sets: 4, reps: 10, restSeconds: 90 },
+            { primaryMuscle: "Hamstrings", count: 2, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 15, restSeconds: 45 },
           ],
         },
         {
-          day: 5, label: "Upper B (Tirer)",
+          day: 5, label: "Lower C - Jambes complètes",
           targets: [
-            { primaryMuscle: "Dos", count: 3, sets: 4, reps: 10, restSeconds: 60 },
-            { primaryMuscle: "Biceps", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
-            { primaryMuscle: "Rear Delts", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 4, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Calves", count: 1, sets: 4, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
           ],
         },
       ],
     },
     ADVANCED: {
-      title: "Split Jambes / Haut du corps",
+      title: "Split bas du corps (4j jambes + 2j haut)",
       sessions: [
         {
-          day: 1, label: "Jambes Lourdes",
+          day: 1, label: "Quadriceps + Fessiers (lourd)",
           targets: [
-            { primaryMuscle: "Glutes", count: 1, sets: 4, reps: 8, restSeconds: 90 },
-            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90 },
-            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Quadriceps", count: 3, sets: 4, reps: 8, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 10, restSeconds: 90 },
+            { primaryMuscle: "Calves", count: 1, sets: 4, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
+          ],
+        },
+        {
+          day: 2, label: "Pectoraux + Épaules + Triceps",
+          targets: [
+            { primaryMuscle: "Pectoraux", count: 3, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Shoulders", count: 2, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Triceps", count: 1, sets: 3, reps: 12, restSeconds: 45 },
+          ],
+        },
+        {
+          day: 3, label: "Fessiers + Ischios + Abdos",
+          targets: [
+            { primaryMuscle: "Glutes", count: 3, sets: 4, reps: 10, restSeconds: 90 },
+            { primaryMuscle: "Hamstrings", count: 2, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 15, restSeconds: 45 },
             { primaryMuscle: "Calves", count: 1, sets: 4, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+          ],
+        },
+        { day: 4, label: "Repos", targets: [] },
+        {
+          day: 5, label: "Dos + Biceps",
+          targets: [
+            { primaryMuscle: "Dos", count: 4, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Biceps", count: 2, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Rear Delts", count: 1, sets: 3, reps: 15, restSeconds: 45 },
+          ],
+        },
+        {
+          day: 6, label: "Jambes (volume) + Cardio",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Cardio", count: 2, sets: 3, reps: 20, restSeconds: 30 },
+          ],
+        },
+      ],
+    },
+  },
+
+  LOSE_FAT: {
+    BEGINNER: {
+      title: "Full Body (jambes + cardio intégré)",
+      sessions: [
+        {
+          day: 1, label: "Full Body A - Jambes + Cardio",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 3, reps: 15, restSeconds: 60, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 15, restSeconds: 60 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 30, restSeconds: 30 },
+            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND", equipment: ["DUMBBELL"] },
+            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 20, restSeconds: 30, mechanics: "ISOLATION" },
+          ],
+        },
+        {
+          day: 3, label: "Full Body B - Fessiers + Cardio",
+          targets: [
+            { primaryMuscle: "Glutes", count: 2, sets: 3, reps: 15, restSeconds: 60 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 15, restSeconds: 60, mechanics: "ISOLATION" },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 30, restSeconds: 30 },
+            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND", equipment: ["CABLE"] },
+            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 20, restSeconds: 30, mechanics: "ISOLATION" },
+          ],
+        },
+        {
+          day: 5, label: "Full Body C - Circuit",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Cardio", count: 2, sets: 3, reps: 30, restSeconds: 30 },
+            { primaryMuscle: "Shoulders", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "COMPOUND" },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 25, restSeconds: 30, mechanics: "ISOLATION" },
+          ],
+        },
+      ],
+    },
+    INTERMEDIATE: {
+      title: "Upper / Lower (cardio actif)",
+      sessions: [
+        {
+          day: 1, label: "Lower A - Brûle-graisse jambes",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 3, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 25, restSeconds: 30 },
+          ],
+        },
+        {
+          day: 2, label: "Upper A - Circuit haut",
+          targets: [
+            { primaryMuscle: "Pectoraux", count: 2, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Dos", count: 2, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Shoulders", count: 1, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 25, restSeconds: 30 },
+          ],
+        },
+        {
+          day: 4, label: "Lower B - Fessiers actifs",
+          targets: [
+            { primaryMuscle: "Glutes", count: 3, sets: 3, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 20, restSeconds: 30 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 25, restSeconds: 30 },
+          ],
+        },
+        {
+          day: 5, label: "Upper B + Cardio",
+          targets: [
+            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Dos", count: 2, sets: 3, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Biceps", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Triceps", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 25, restSeconds: 30 },
+          ],
+        },
+      ],
+    },
+    ADVANCED: {
+      title: "Split jambes + cardio haute fréquence",
+      sessions: [
+        {
+          day: 1, label: "Jambes + Cardio HIIT",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 3, sets: 4, reps: 12, restSeconds: 45, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Cardio", count: 2, sets: 4, reps: 20, restSeconds: 20 },
+          ],
+        },
+        {
+          day: 2, label: "Pectoraux + Dos (superset)",
+          targets: [
+            { primaryMuscle: "Pectoraux", count: 3, sets: 3, reps: 12, restSeconds: 30 },
+            { primaryMuscle: "Dos", count: 3, sets: 3, reps: 12, restSeconds: 30 },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 20, restSeconds: 20 },
+          ],
+        },
+        {
+          day: 3, label: "Fessiers + Ischios + Cardio",
+          targets: [
+            { primaryMuscle: "Glutes", count: 3, sets: 4, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Hamstrings", count: 2, sets: 4, reps: 12, restSeconds: 45 },
+            { primaryMuscle: "Cardio", count: 2, sets: 4, reps: 20, restSeconds: 20 },
+          ],
+        },
+        { day: 4, label: "Repos", targets: [] },
+        {
+          day: 5, label: "Épaules + Bras + Cardio",
+          targets: [
+            { primaryMuscle: "Shoulders", count: 3, sets: 3, reps: 12, restSeconds: 30 },
+            { primaryMuscle: "Biceps", count: 2, sets: 3, reps: 12, restSeconds: 30 },
+            { primaryMuscle: "Triceps", count: 2, sets: 3, reps: 12, restSeconds: 30 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 25, restSeconds: 20 },
+          ],
+        },
+        {
+          day: 6, label: "Jambes volume + Abdos",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 12, restSeconds: 45, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 15, restSeconds: 45 },
+            { primaryMuscle: "Abdominaux", count: 3, sets: 3, reps: 25, restSeconds: 20 },
+          ],
+        },
+      ],
+    },
+  },
+
+  MAINTENANCE: {
+    BEGINNER: {
+      title: "Full Body (jambes priorité modérée)",
+      sessions: [
+        {
+          day: 1, label: "Full Body A",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["DUMBBELL"] },
+            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND", equipment: ["CABLE"] },
+            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+          ],
+        },
+        {
+          day: 3, label: "Full Body B",
+          targets: [
+            { primaryMuscle: "Glutes", count: 2, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Shoulders", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
+          ],
+        },
+        {
+          day: 5, label: "Full Body C",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Dos", count: 1, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Biceps", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "ISOLATION" },
+            { primaryMuscle: "Calves", count: 1, sets: 3, reps: 15, restSeconds: 45, mechanics: "ISOLATION" },
+          ],
+        },
+      ],
+    },
+    INTERMEDIATE: {
+      title: "Upper / Lower (équilibré)",
+      sessions: [
+        {
+          day: 1, label: "Lower A - Jambes + Fessiers",
+          targets: [
+            { primaryMuscle: "Glutes", count: 2, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+          ],
+        },
+        {
+          day: 2, label: "Upper A - Pousser",
+          targets: [
+            { primaryMuscle: "Pectoraux", count: 2, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Shoulders", count: 2, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Triceps", count: 1, sets: 3, reps: 12, restSeconds: 45 },
+          ],
+        },
+        {
+          day: 4, label: "Lower B - Jambes actives",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 2, sets: 3, reps: 12, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 1, sets: 3, reps: 12, restSeconds: 90 },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 15, restSeconds: 45 },
+          ],
+        },
+        {
+          day: 5, label: "Upper B - Tirer",
+          targets: [
+            { primaryMuscle: "Dos", count: 3, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Biceps", count: 1, sets: 3, reps: 12, restSeconds: 45, mechanics: "ISOLATION" },
+            { primaryMuscle: "Rear Delts", count: 1, sets: 3, reps: 15, restSeconds: 45 },
+          ],
+        },
+      ],
+    },
+    ADVANCED: {
+      title: "Split libre (bas 60% / haut 40%)",
+      sessions: [
+        {
+          day: 1, label: "Quadriceps + Fessiers",
+          targets: [
+            { primaryMuscle: "Quadriceps", count: 3, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Calves", count: 1, sets: 4, reps: 15, restSeconds: 45 },
           ],
         },
         {
           day: 2, label: "Dos + Biceps",
           targets: [
-            { primaryMuscle: "Dos", count: 4, sets: 4, reps: 8, restSeconds: 60 },
+            { primaryMuscle: "Dos", count: 4, sets: 4, reps: 10, restSeconds: 60 },
             { primaryMuscle: "Biceps", count: 2, sets: 3, reps: 12, restSeconds: 45 },
           ],
         },
         {
-          day: 3, label: "Fessiers + Cardio",
+          day: 3, label: "Fessiers + Ischios + Cardio léger",
           targets: [
             { primaryMuscle: "Glutes", count: 2, sets: 4, reps: 12, restSeconds: 60 },
-            { primaryMuscle: "Cardio", count: 3, sets: 3, reps: 20, restSeconds: 30 },
-            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 30, restSeconds: 30 },
+            { primaryMuscle: "Hamstrings", count: 2, sets: 4, reps: 10, restSeconds: 60 },
+            { primaryMuscle: "Cardio", count: 1, sets: 3, reps: 20, restSeconds: 45 },
+            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 15, restSeconds: 45 },
           ],
         },
         { day: 4, label: "Repos", targets: [] },
@@ -259,13 +514,12 @@ const GENDER_SPLITS: Record<string, Record<string, WorkoutSplitTemplate>> = {
           ],
         },
         {
-          day: 6, label: "Full Body + Cardio",
+          day: 6, label: "Jambes (volume) + Abdos",
           targets: [
-            { primaryMuscle: "Cardio", count: 3, sets: 3, reps: 20, restSeconds: 30 },
-            { primaryMuscle: "Pectoraux", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND", equipment: ["BODYWEIGHT"] },
-            { primaryMuscle: "Quadriceps", count: 1, sets: 3, reps: 12, restSeconds: 60, mechanics: "COMPOUND" },
-            { primaryMuscle: "Rear Delts", count: 1, sets: 3, reps: 15, restSeconds: 45 },
-            { primaryMuscle: "Abdominaux", count: 1, sets: 3, reps: 30, restSeconds: 30 },
+            { primaryMuscle: "Quadriceps", count: 2, sets: 4, reps: 10, restSeconds: 90, mechanics: "COMPOUND" },
+            { primaryMuscle: "Glutes", count: 2, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Hamstrings", count: 1, sets: 3, reps: 12, restSeconds: 60 },
+            { primaryMuscle: "Abdominaux", count: 2, sets: 3, reps: 15, restSeconds: 45 },
           ],
         },
       ],
@@ -273,18 +527,21 @@ const GENDER_SPLITS: Record<string, Record<string, WorkoutSplitTemplate>> = {
   },
 }
 
-export function getWorkoutSplit(gender: string, level: string): WorkoutSplitTemplate | undefined {
-  const byGender = GENDER_SPLITS[gender]
-  if (!byGender) return GENDER_SPLITS["MALE"]?.[level]
-  return byGender[level] ?? GENDER_SPLITS["MALE"]?.[level]
+export function getWorkoutSplit(gender: string, level: string, goal = "GAIN_MUSCLE"): WorkoutSplitTemplate | undefined {
+  if (gender === "FEMALE") {
+    const byGoal = FEMALE_GOAL_SPLITS[goal]
+    if (byGoal?.[level]) return byGoal[level]
+    return FEMALE_GOAL_SPLITS["GAIN_MUSCLE"]?.[level] ?? GENDER_SPLITS["MALE"]?.[level]
+  }
+  return GENDER_SPLITS["MALE"]?.[level]
 }
 
-export function getSessionsPerWeek(activityLevel: string, gender: string): number {
+export function getSessionsPerWeek(activityLevel: string, gender: string, goal = "GAIN_MUSCLE"): number {
   let level: string = "BEGINNER"
   if (activityLevel === "LIGHT" || activityLevel === "MODERATE") level = "INTERMEDIATE"
   if (activityLevel === "ACTIVE" || activityLevel === "VERY_ACTIVE") level = "ADVANCED"
-  const split = getWorkoutSplit(gender, level)
+  const split = getWorkoutSplit(gender, level, goal)
   return split?.sessions.filter(s => s.targets.length > 0).length ?? 3
 }
 
-export { GENDER_SPLITS }
+export { GENDER_SPLITS, FEMALE_GOAL_SPLITS }

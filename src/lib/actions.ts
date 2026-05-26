@@ -434,7 +434,7 @@ export async function generateWorkoutPlan(
   // Analyser la description d'objectif pour ajuster le programme
   const adjustments = analyzeGoalDescription(goalDescription)
 
-  const split = getWorkoutSplit(gender, level)
+  const split = getWorkoutSplit(gender, level, goal)
   if (!split) return
 
   const intensity = adjustments.intensityModifier
