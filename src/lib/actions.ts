@@ -778,7 +778,7 @@ export async function getNutritionPlan() {
 
   const { data: plan } = await supabase
     .from("fit_nutrition_plans")
-    .select("id, meals_per_day, total_calories, protein_g, carbs_g, fat_g, dietary_restrictions")
+    .select("id, meals_per_day, total_calories, protein_g, carbs_g, fat_g")
     .eq("user_profile_id", profile.id)
     .order("created_at", { ascending: false })
     .limit(1)
@@ -829,7 +829,6 @@ export async function getNutritionPlan() {
       carbs_g: plan.carbs_g,
       fat_g: plan.fat_g,
       meals_per_day: plan.meals_per_day,
-      dietary_restrictions: plan.dietary_restrictions,
     },
     meals: mealTargets.map((mt) => ({
       ...mt,

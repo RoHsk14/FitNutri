@@ -118,11 +118,11 @@ export default async function NutritionPlanPage() {
       </div>
 
       {/* Restrictions */}
-      {plan.dietary_restrictions && plan.dietary_restrictions.length > 0 && (
+      {profile.dietary_restrictions && profile.dietary_restrictions.length > 0 && (
         <div className="rounded-xl border border-amber-100 dark:border-amber-900 bg-amber-50 dark:bg-amber-900/20 p-4">
           <p className="text-xs font-medium text-amber-700 dark:text-amber-400 mb-1">Restrictions alimentaires</p>
           <div className="flex flex-wrap gap-2">
-            {plan.dietary_restrictions.map((r: string) => (
+            {profile.dietary_restrictions.map((r: string) => (
               <span key={r} className="rounded-full bg-amber-100 dark:bg-amber-900/40 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-300">
                 {r === "vegan" ? "Végétalien" : r === "gluten_free" ? "Sans gluten" : r === "lactose_free" ? "Sans lactose" : r}
               </span>
