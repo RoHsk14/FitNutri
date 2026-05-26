@@ -76,8 +76,8 @@ export function MealSuggestions() {
             <div className="p-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-gray-900">{s.food_item.name}</span>
+                  <div className="flex items-center gap-2 min-w-0 flex-wrap">
+                    <span className="truncate text-sm font-semibold text-gray-900">{s.food_item.name}</span>
                     <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-500">
                       {s.quantity_g}g
                     </span>

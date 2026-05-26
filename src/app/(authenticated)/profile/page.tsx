@@ -36,7 +36,7 @@ export default async function ProfilePage() {
       </div>
 
       {profile ? (
-        <div className="grid gap-6 xl:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           {/* Infos actuelles */}
           <Card>
             <CardHeader>
@@ -73,7 +73,7 @@ export default async function ProfilePage() {
 
             {/* Photos objectif */}
             {(profile.goal_image_url || profile.current_physique_image_url) && (
-              <div className="mt-4 flex gap-3">
+              <div className="mt-4 flex flex-col sm:flex-row gap-3">
                 {profile.goal_image_url && (
                   <div className="flex-1">
                     <p className="text-xs text-gray-500 mb-1">🎯 Body goal</p>

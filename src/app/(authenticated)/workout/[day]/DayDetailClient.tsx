@@ -121,7 +121,7 @@ export function DayDetailClient({ dayData, dayNum, plan, dateStr, initialComplet
         </div>
 
         {/* Badges stats */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="rounded-xl bg-amber-50 p-4 text-center">
             <span className="text-2xl">⏱️</span>
             <p className="mt-1.5 text-base font-bold text-amber-700">{estTimeMin} min</p>

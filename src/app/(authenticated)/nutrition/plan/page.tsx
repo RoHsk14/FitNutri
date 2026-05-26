@@ -67,7 +67,7 @@ export default async function NutritionPlanPage() {
             {fmt(plan.total_calories, 0)} kcal
           </span>
         </div>
-        <div className="mt-4 grid grid-cols-3 gap-3">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="rounded-xl bg-white/10 p-3 text-center backdrop-blur-sm">
             <p className="text-2xl font-bold">{fmt(plan.protein_g, 1)}</p>
             <p className="text-xs text-primary-100">Protéines (g)</p>
@@ -106,8 +106,8 @@ export default async function NutritionPlanPage() {
                   <p className="text-[10px] font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wide">Suggestions</p>
                   {meal.items.map((item: any) => (
                     <div key={item.id} className="flex items-center justify-between rounded-md bg-gray-50 dark:bg-gray-700/50 px-2.5 py-1.5 text-xs">
-                      <span className="font-medium text-gray-700 dark:text-gray-300">{item.food_item?.name ?? "Aliment"}</span>
-                      <span className="text-gray-400 dark:text-gray-500">{item.quantity_g}g</span>
+                      <span className="min-w-0 truncate font-medium text-gray-700 dark:text-gray-300">{item.food_item?.name ?? "Aliment"}</span>
+                      <span className="shrink-0 text-gray-400 dark:text-gray-500">{item.quantity_g}g</span>
                     </div>
                   ))}
                 </div>

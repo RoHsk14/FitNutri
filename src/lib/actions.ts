@@ -109,10 +109,18 @@ export async function submitOnboarding(data: OnboardingData) {
   if (fetchError) throw new Error("Impossible de recuperer le profil")
 
   // Générer automatiquement le plan d'entraînement
-  await generateWorkoutPlan(profile.id, data.goal, data.activityLevel, data.gender, data.goalDescription)
+  try {
+    await generateWorkoutPlan(profile.id, data.goal, data.activityLevel, data.gender, data.goalDescription)
+  } catch (e) {
+    console.error("Erreur génération plan entraînement:", e)
+  }
 
   // Générer le plan nutritionnel
-  await generateNutritionPlan(profile.id, result, data.mealsPerDay, data.dietaryRestrictions)
+  try {
+    await generateNutritionPlan(profile.id, result, data.mealsPerDay, data.dietaryRestrictions)
+  } catch (e) {
+    console.error("Erreur génération plan nutrition:", e)
+  }
 
   return profile
 }

@@ -171,9 +171,9 @@ export function FoodLogger({ initialMeals, totals, targetCalories, targetProtein
                     const kcal = Math.round((m.food_item.calories_per_100g * m.quantity_g) / 100)
                     return (
                       <div key={m.id} className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-sm">
-                        <div className="flex items-center gap-2">
-                          <span className="text-gray-900">{m.food_item.name}</span>
-                          <span className="text-gray-400 text-xs">{m.quantity_g}g</span>
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="truncate text-gray-900">{m.food_item.name}</span>
+                          <span className="shrink-0 text-gray-400 text-xs">{m.quantity_g}g</span>
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="text-gray-600 text-xs">{kcal} kcal</span>

@@ -102,8 +102,8 @@ export default function NutritionPage() {
                       <div className="space-y-1">
                         {meal.items.map((item: any) => (
                           <div key={item.id} className="flex items-center justify-between rounded-md bg-gray-50 px-2.5 py-1.5 text-xs">
-                            <span className="font-medium text-gray-700">{item.food_item?.name ?? "Aliment"}</span>
-                            <div className="flex items-center gap-2 text-gray-400">
+                            <span className="min-w-0 truncate font-medium text-gray-700">{item.food_item?.name ?? "Aliment"}</span>
+                            <div className="flex shrink-0 items-center gap-2 text-gray-400">
                               <span>{item.quantity_g}g</span>
                               <span>{item.macros?.calories ?? 0} kcal</span>
                             </div>

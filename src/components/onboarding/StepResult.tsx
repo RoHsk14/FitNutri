@@ -52,7 +52,7 @@ export function StepResult({ data, result }: Props) {
 
       {/* Photos */}
       {(data.goalImageUrl || data.currentPhysiqueImageUrl) && (
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           {data.goalImageUrl && (
             <div className="flex-1">
               <p className="text-xs text-gray-500 mb-1">🎯 Body goal</p>
@@ -102,7 +102,7 @@ export function StepResult({ data, result }: Props) {
         <h3 className="mb-3 text-sm font-semibold text-gray-700">
           Répartition des macronutriments
         </h3>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <MacroBar
             label="Protéines"
             value={`${result.proteinG}g`}

@@ -155,7 +155,7 @@ export default async function DashboardPage() {
         <Card className="md:col-span-2 lg:col-span-2">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Progression nutrition</h2>
           {profile ? (
-            <div className="grid gap-2 grid-cols-3 sm:gap-4">
+            <div className="grid gap-2 grid-cols-1 sm:grid-cols-3 sm:gap-4">
               <MacroStatBox label="Protéines" current={dailyMeals.totals.protein} target={profile.target_protein_g} color="bg-blue-500" />
               <MacroStatBox label="Glucides" current={dailyMeals.totals.carbs} target={profile.target_carbs_g} color="bg-amber-500" />
               <MacroStatBox label="Lipides" current={dailyMeals.totals.fat} target={profile.target_fat_g} color="bg-rose-500" />

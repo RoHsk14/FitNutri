@@ -91,7 +91,7 @@ export function OnboardingForm() {
         ))}
       </nav>
 
-      <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm">
         {step === 0 && <StepPhysicalInfo data={data} update={update} />}
         {step === 1 && <StepGoalLevel data={data} update={update} />}
         {step === 2 && <StepGoalDetails data={data} update={update} />}
