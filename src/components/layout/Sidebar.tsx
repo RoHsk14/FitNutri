@@ -42,6 +42,7 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { href: "/workout", label: "Programme" },
       { href: "/workout/bibliotheque", label: "Bibliothèque" },
+      { href: "/workout/personnalise", label: "IA Personnalisée" },
       { href: "/workout/historique", label: "Historique" },
     ],
   },

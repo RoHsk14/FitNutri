@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { FoodLogger, MealSuggestions, QuickMealInput } from "@/components/dashboard"
+import { RecipeGenerator } from "@/components/ai/RecipeGenerator"
 import { Card, CardHeader, CardTitle } from "@/components/ui"
 import { getCurrentProfile, getDailyMeals, getNutritionPlan } from "@/lib/actions"
 import { fmt } from "@/lib/format"
@@ -124,6 +125,9 @@ export default function NutritionPage() {
 
           {/* Saisie rapide */}
           <QuickMealInput mealsPerDay={nutritionPlan.plan.meals_per_day} onMealAdded={handleMealAdded} />
+
+          {/* Assistant recettes IA */}
+          <RecipeGenerator />
 
           {/* Journal alimentaire */}
           <Card>

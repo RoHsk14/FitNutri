@@ -7,7 +7,7 @@ import { onboardingSchema, weightLogSchema, profileUpdateSchema } from "./valida
 import { getWorkoutSplit, getSessionsPerWeek } from "./workout-splits"
 import { selectExercisesForTarget } from "./exercise-selector"
 import { analyzeGoalDescription } from "./goal-adapter"
-import { analyzePhysiqueWithGemini } from "./gemini"
+import { analyzePhysiqueWithGemini, generateDailyCoachingMessage, generateRecipeWithGemini, suggestMealFromIngredients, analyzeNutritionalGapsWithGemini, generateCustomWorkoutWithGemini } from "./gemini"
 import type { OnboardingData } from "./types"
 
 // ─── PROFIL ───────────────────────────────────────────
@@ -1184,4 +1184,101 @@ export async function getWorkoutHistory(limitDays = 90) {
   return Object.entries(grouped)
     .sort(([a], [b]) => b.localeCompare(a))
     .map(([date, data]) => ({ date, ...data }))
+}
+
+// ─── IA COACHING ──────────────────────────────────────
+
+export async function getCoachingMessage() {
+  const profile = await getCurrentProfile()
+  if (!profile) return null
+
+  const today = new Date().getDay()
+  const dayOfWeek = today === 0 ? 7 : today
+  const completions = await getWeeklyCompletions()
+  const weekProgressPercent = Math.min(100, Math.round((completions.weeklyCount / 21) * 100))
+
+  return generateDailyCoachingMessage({
+    gender: profile.gender,
+    goal: profile.goal,
+    age: profile.age,
+    goalDescription: profile.goal_description,
+    currentPhysiqueImageUrl: profile.current_physique_image_url,
+    hasWorkoutToday: !!completions.daily[new Date().toISOString().split("T")[0]],
+    weekProgressPercent,
+  })
+}
+
+// ─── IA RECETTES ──────────────────────────────────────
+
+export async function generateRecipeAction(formData: FormData) {
+  const mealType = formData.get("mealType") as string
+  const restrictions = (formData.get("restrictions") as string)?.split(",").map(s => s.trim()).filter(Boolean) ?? []
+  const preferences = formData.get("preferences") as string
+  const ingredients = formData.get("ingredients") as string
+
+  const profile = await getCurrentProfile()
+  if (!profile) return null
+
+  return generateRecipeWithGemini({
+    targetCalories: Math.round(profile.target_calories / (profile.meals_per_day || 3)),
+    targetProteinG: Math.round(profile.target_protein_g / (profile.meals_per_day || 3)),
+    targetCarbsG: Math.round(profile.target_carbs_g / (profile.meals_per_day || 3)),
+    targetFatG: Math.round(profile.target_fat_g / (profile.meals_per_day || 3)),
+    mealType,
+    restrictions,
+    preferences,
+    availableIngredients: ingredients || undefined,
+  })
+}
+
+export async function suggestMealAction(formData: FormData) {
+  const ingredients = formData.get("ingredients") as string
+  return suggestMealFromIngredients({ ingredients })
+}
+
+export async function analyzeGapsAction() {
+  const profile = await getCurrentProfile()
+  if (!profile) return null
+
+  const today = new Date().toISOString().split("T")[0]
+  const supabase = getSupabaseAdmin()
+  const { data } = await supabase
+    .from("fit_daily_meals")
+    .select("meal_type, food:fit_food_items(name, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g), quantity_g")
+    .eq("user_profile_id", profile.id)
+    .eq("date", today)
+
+  const meals = (data ?? []).map((d: any) => {
+    const food = Array.isArray(d.food) ? d.food[0] : d.food
+    const qty = d.quantity_g || 100
+    return {
+      name: food?.name ?? "Repas",
+      calories: Math.round(((food?.calories_per_100g ?? 0) * qty) / 100),
+      protein_g: Math.round(((food?.protein_per_100g ?? 0) * qty) / 100),
+      carbs_g: Math.round(((food?.carbs_per_100g ?? 0) * qty) / 100),
+      fat_g: Math.round(((food?.fat_per_100g ?? 0) * qty) / 100),
+    }
+  })
+
+  return analyzeNutritionalGapsWithGemini(meals, {
+    calories: profile.target_calories,
+    protein_g: profile.target_protein_g,
+    carbs_g: profile.target_carbs_g,
+    fat_g: profile.target_fat_g,
+  })
+}
+
+export async function generateCustomWorkoutAction(formData: FormData) {
+  const targetMuscles = (formData.get("targetMuscles") as string)?.split(",").map(s => s.trim()).filter(Boolean) ?? []
+  const duration = parseInt(formData.get("duration") as string) || undefined
+
+  const profile = await getCurrentProfile()
+  if (!profile) return null
+
+  return generateCustomWorkoutWithGemini({
+    targetMuscles,
+    goal: profile.goal,
+    gender: profile.gender,
+    durationMinutes: duration,
+  })
 }

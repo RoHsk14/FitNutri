@@ -1,4 +1,5 @@
 import { StatsCard, MacroProgress, CalorieRing, WeekOverview, WorkoutDay, MealSuggestions, WaterTracker } from "@/components/dashboard"
+import { CoachingCard } from "@/components/ai/CoachingCard"
 import { Card } from "@/components/ui"
 import { getCurrentProfile, getTodaysWorkout, getWeeklyWorkout, getDailyMeals } from "@/lib/actions"
 import { calculateBMI } from "@/lib/calculations"
@@ -41,6 +42,9 @@ export default async function DashboardPage() {
           </div>
         )}
       </div>
+
+      {/* COACHING IA */}
+      <CoachingCard />
 
       {/* STATS */}
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
