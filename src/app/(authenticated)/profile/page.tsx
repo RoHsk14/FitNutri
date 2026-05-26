@@ -104,17 +104,25 @@ export default async function ProfilePage() {
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle>Commencer</CardTitle>
+            <CardTitle>Profil introuvable</CardTitle>
           </CardHeader>
           <p className="text-gray-500 mb-4">
-            Remplissez le questionnaire pour générer votre programme personnalisé.
+            Aucun profil lié à votre session. Vous devez remplir le questionnaire pour créer votre programme.
           </p>
-          <a
-            href="/onboarding"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
-          >
-            Remplir le questionnaire
-          </a>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/login"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
+            >
+              Recommencer l&apos;onboarding
+            </a>
+            <a
+              href="/onboarding"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              Continuer le questionnaire
+            </a>
+          </div>
         </Card>
       )}
     </div>

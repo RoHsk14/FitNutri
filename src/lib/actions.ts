@@ -1140,3 +1140,48 @@ function calculateNutritionFromProfile(profile: any) {
     fatG: profile.target_fat_g,
   }
 }
+
+// ─── HISTORIQUE ENTRAÎNEMENT ─────────────────────────
+
+export async function getWorkoutHistory(limitDays = 90) {
+  const profile = await getCurrentProfile()
+  if (!profile) return []
+
+  const supabase = getSupabaseAdmin()
+  const since = new Date()
+  since.setDate(since.getDate() - limitDays)
+
+  const { data } = await supabase
+    .from("fit_workout_completions")
+    .select(`
+      completed_at,
+      workout_session_id,
+      workout_session:fit_workout_sessions!inner(
+        exercise_id,
+        exercise:fit_exercises!inner(name, muscle_group)
+      )
+    `)
+    .eq("user_profile_id", profile.id)
+    .gte("completed_at", since.toISOString())
+    .order("completed_at", { ascending: false })
+
+  const grouped: Record<string, { count: number; exercises: string[] }> = {}
+  for (const c of data ?? []) {
+    const day = (c as any).completed_at?.split("T")[0]
+    if (!day) continue
+    if (!grouped[day]) grouped[day] = { count: 0, exercises: [] }
+    grouped[day].count++
+    const ws = (c as any).workout_session
+    const exercise = Array.isArray(ws) ? ws[0] : ws
+    if (exercise?.exercise) {
+      const ex = Array.isArray(exercise.exercise) ? exercise.exercise[0] : exercise.exercise
+      if (ex?.name && !grouped[day].exercises.includes(ex.name)) {
+        grouped[day].exercises.push(ex.name)
+      }
+    }
+  }
+
+  return Object.entries(grouped)
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([date, data]) => ({ date, ...data }))
+}
