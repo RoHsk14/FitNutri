@@ -1,0 +1,87 @@
+-- 1. TABLE DE LOG QUOTIDIEN DES REPAS
+create table fit_daily_meals (
+  id             uuid primary key default gen_random_uuid(),
+  user_profile_id uuid not null references fit_user_profiles(id) on delete cascade,
+  log_date       date not null default current_date,
+  meal_number    int not null,
+  food_item_id   uuid not null references fit_food_items(id),
+  quantity_g     float not null,
+  created_at     timestamptz not null default now()
+);
+
+create index idx_fit_daily_meals_date on fit_daily_meals(user_profile_id, log_date);
+
+alter table fit_daily_meals enable row level security;
+
+-- 2. SEED EXERCICES
+insert into fit_exercises (name, muscle_group, description, video_url) values
+  ('Développé couché barre',       'Pectoraux',     'Allongé sur le dos, barre au niveau des mamelons, pousser vers le haut', 'https://www.youtube.com/watch?v=rT7DgCr-3uE'),
+  ('Développé incliné haltères',   'Pectoraux',     'Sur banc incliné 30°, haltères montent en arc de cercle', 'https://www.youtube.com/watch?v=8iNtDZ_L5Wk'),
+  ('Écarté à la poulie vis-à-vis', 'Pectoraux',     'Debout entre deux poulies, ramener les mains devant soi', 'https://www.youtube.com/watch?v=eG1iEs9qBkA'),
+  ('Pompes',                       'Pectoraux',     'Position planche, descendre poitrine vers le sol', 'https://www.youtube.com/watch?v=IODxDxX7oi4'),
+  ('Tirage horizontal à la poulie','Dos',           'Assis, tirer la poulie vers le ventre, dos droit', 'https://www.youtube.com/watch?v=GZbfdE2Lc6s'),
+  ('Traction supination',          'Dos',           'Mains en supination, monter jusqu à ce que le menton dépasse la barre', 'https://www.youtube.com/watch?v=eGo4IYpE6p8'),
+  ('Rowing barre',                 'Dos',           'Penché en avant, tirer la barre vers le nombril', 'https://www.youtube.com/watch?v=G8l_8chR3eg'),
+  ('Tirage vertical (pull-down)',  'Dos',           'Assis à la machine, tirer la barre vers la clavicule', 'https://www.youtube.com/watch?v=Iu-ge_RD3Eo'),
+  ('Développé militaire',          'Épaules',       'Debout ou assis, barre de la clavicule au-dessus de la tête', 'https://www.youtube.com/watch?v=2yjwHTz9DqM'),
+  ('Élévation latérale',           'Épaules',       'Debout, haltères sur les côtés, monter à hauteur d épaules', 'https://www.youtube.com/watch?v=3VcKaXpzqR0'),
+  ('Oiseau (face pull)',           'Épaules',       'Penché en avant, écarter les bras vers l arrière', 'https://www.youtube.com/watch?v=B-e2pXynF74'),
+  ('Squat barre',                  'Jambes',        'Barre sur les trapèzes, fléchir les jambes à 90° minimum', 'https://www.youtube.com/watch?v=ultWZbUMPL8'),
+  ('Presse à cuisses',             'Jambes',        'Assis à la machine, pousser le plateau', 'https://www.youtube.com/watch?v=UaGabbNJCiQ'),
+  ('Fentes',                       'Jambes',        'Alterner les jambes, genou arrière proche du sol', 'https://www.youtube.com/watch?v=rXUgNxcbb0g'),
+  ('Leg curl',                     'Jambes',        'Allongé sur le ventre, ramener les talons vers les fessiers', 'https://www.youtube.com/watch?v=NL3FJNbFYZ8'),
+  ('Extension jambes',             'Jambes',        'Assis à la machine, tendre les jambes', 'https://www.youtube.com/watch?v=QttU-IVDi9o'),
+  ('Curl barre',                   'Biceps',        'Debout, barre prise en supination, monter vers les épaules', 'https://www.youtube.com/watch?v=hEFfG1f9TWk'),
+  ('Curl marteau',                 'Biceps',        'Haltères en prise marteau, monter alternativement', 'https://www.youtube.com/watch?v=L0hMLtx7C3A'),
+  ('Extensions triceps à la poulie','Triceps',      'Poulie haute, pousser vers le bas en verrouillant les coudes', 'https://www.youtube.com/watch?v=2-LAMeUGxVs'),
+  ('Dips',                         'Triceps',       'Aux barres parallèles, descendre puis remonter', 'https://www.youtube.com/watch?v=2z8gYmov8UQ'),
+  ('Curl barre pupitre',           'Biceps',        'Assis au pupitre, barre en supination, monter', 'https://www.youtube.com/watch?v=fI4xYBM-xCg'),
+  ('Développé couché prise serrée','Triceps',       'Barre prise serrée, descendre au sternum', 'https://www.youtube.com/watch?v=CItMoqrWioI'),
+  ('Crunch',                       'Abdominaux',    'Allongé sur le dos, genoux fléchis, monter les épaules', 'https://www.youtube.com/watch?v=Xyd_fa5zoEA'),
+  ('Lève-jambes suspendu',         'Abdominaux',    'Suspendu à la barre, monter les jambes à l équerre', 'https://www.youtube.com/watch?v=JB2oyawG9KI'),
+  ('Gainage',                      'Abdominaux',    'Position planche avant, tenir 30-60 secondes', 'https://www.youtube.com/watch?v=ASdvN6Y2e3A'),
+  ('Mountain climbers',            'Cardio',        'Position pompe, amener les genoux alternativement à la poitrine', 'https://www.youtube.com/watch?v=nmwgirgX2ps'),
+  ('Jumping jacks',                'Cardio',        'Sauts avec écartement des bras et jambes', 'https://www.youtube.com/watch?v=UpH7D0BqUN0'),
+  ('Burpees',                      'Cardio',        'Pompe + saut vertical, répéter', 'https://www.youtube.com/watch?v=qLBXEnBmo4o'),
+  ('Corde à sauter',               'Cardio',        'Sauts à la corde, pieds alternés ou groupés', 'https://www.youtube.com/watch?v=Fq5y2R9bYbE'),
+  ('RDL',                          'Fessiers',      'Barre en main, dos droit, descendre la barre le long des jambes en poussant les fessiers en arrière', 'https://www.youtube.com/watch?v=1Vu4Nl9r-pQ'),
+  ('Hip thrust',                   'Fessiers',      'Épaules sur un banc, barre sur les hanches, pousser vers le haut en contractant les fessiers', 'https://www.youtube.com/watch?v=oioQN9FUSas'),
+  ('Mollets debout',               'Mollets',       'Debout sur une marche, monter sur la pointe des pieds en contractant les mollets', 'https://www.youtube.com/watch?v=kzBdOFzqkxI');
+
+-- 3. SEED ALIMENTS
+insert into fit_food_items (name, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g, category) values
+  ('Blanc de poulet cuit',       165, 31.0, 0.0, 3.6, 'Viandes'),
+  ('Filet de boeuf cuit',        250, 26.0, 0.0, 15.0, 'Viandes'),
+  ('Oeuf entier',                155, 13.0, 1.1, 11.0, 'Œufs'),
+  ('Blanc d oeuf',                52, 11.0, 0.7, 0.2, 'Œufs'),
+  ('Saumon cuit',                208, 25.0, 0.0, 13.0, 'Poissons'),
+  ('Thon au naturel',            116, 25.0, 0.0, 1.0, 'Poissons'),
+  ('Riz blanc cuit',             130, 2.7, 28.0, 0.3, 'Féculents'),
+  ('Riz complet cuit',           123, 2.9, 25.0, 1.0, 'Féculents'),
+  ('Pâtes cuites',               131, 5.0, 25.0, 1.1, 'Féculents'),
+  ('Pomme de terre cuite',        87, 2.0, 20.0, 0.1, 'Féculents'),
+  ('Patate douce cuite',          86, 1.6, 20.0, 0.1, 'Féculents'),
+  ('Flocons d avoine',           389, 17.0, 66.0, 7.0, 'Céréales'),
+  ('Quinoa cuit',                120, 4.4, 21.0, 1.9, 'Féculents'),
+  ('Pain complet',               247, 9.0, 47.0, 3.4, 'Céréales'),
+  ('Avocat',                     160, 2.0, 8.5, 15.0, 'Fruits'),
+  ('Banane',                      89, 1.1, 23.0, 0.3, 'Fruits'),
+  ('Pomme',                       52, 0.3, 14.0, 0.2, 'Fruits'),
+  ('Brocoli cuit',                35, 2.4, 7.0, 0.4, 'Légumes'),
+  ('Épinards cuits',              23, 2.9, 3.8, 0.4, 'Légumes'),
+  ('Salade verte',                15, 1.4, 2.9, 0.2, 'Légumes'),
+  ('Lait entier',                 66, 3.2, 4.8, 3.6, 'Produits laitiers'),
+  ('Fromage blanc 0%',            45, 7.5, 4.0, 0.2, 'Produits laitiers'),
+  ('Yaourt grec nature',          97, 9.0, 4.0, 5.0, 'Produits laitiers'),
+  ('Amandes',                    579, 21.0, 22.0, 50.0, 'Olégineux'),
+  ('Beurre de cacahuète',        588, 25.0, 20.0, 50.0, 'Olégineux'),
+  ('Huile d olive',              884, 0.0, 0.0, 100.0, 'Matières grasses'),
+  ('Miel',                       304, 0.3, 82.0, 0.0, 'Sucreries'),
+  ('Whey protéine (poudre)',     400, 80.0, 10.0, 5.0, 'Compléments'),
+  ('Riz soufflé (galette)',       380, 8.0, 82.0, 3.0, 'Céréales'),
+  ('Pois chiches cuits',         139, 7.6, 23.0, 2.6, 'Légumineuses'),
+  ('Lentilles cuites',           116, 9.0, 20.0, 0.4, 'Légumineuses'),
+  ('Tofu ferme',                 144, 17.0, 3.0, 9.0, 'Viandes'),
+  ('Seitan',                     120, 22.0, 4.0, 2.0, 'Viandes'),
+  ('Riz au lait (dessert)',      120, 3.5, 22.0, 2.0, 'Produits laitiers'),
+  ('Galette de riz',             380, 8.0, 82.0, 3.0, 'Céréales');

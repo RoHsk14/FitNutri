@@ -1,0 +1,3287 @@
+{
+  "generated": "2026-05-25T15:57:15.818Z",
+  "source": "Muscle & Strength",
+  "count": 328,
+  "exercises": [
+    {
+      "name": "1 4 Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/1-4-squat.html",
+      "slug": "1-4-squat"
+    },
+    {
+      "name": "1 Leg Pushup",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/1-leg-pushup.html",
+      "slug": "1-leg-pushup"
+    },
+    {
+      "name": "45 Degree Leg Press",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/45-degree-leg-press.html",
+      "slug": "45-degree-leg-press"
+    },
+    {
+      "name": "45 Degree Toe Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/45-degree-toe-raise.html",
+      "slug": "45-degree-toe-raise"
+    },
+    {
+      "name": "45 Degress Calf Press",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/45-degress-calf-press.html",
+      "slug": "45-degress-calf-press"
+    },
+    {
+      "name": "Abdominal Pendulum",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/abdominal-pendulum.html",
+      "slug": "abdominal-pendulum"
+    },
+    {
+      "name": "Alternate Bent Over Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-bent-over-dumbbell-kickback.html",
+      "slug": "alternate-bent-over-dumbbell-kickback"
+    },
+    {
+      "name": "Alternate Bent Over Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-bent-over-dumbbell-reverse-fly.html",
+      "slug": "alternate-bent-over-dumbbell-reverse-fly"
+    },
+    {
+      "name": "Alternate Decline Dumbbell Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-decline-dumbbell-flys.html",
+      "slug": "alternate-decline-dumbbell-flys"
+    },
+    {
+      "name": "Alternate Dumbbell Bench Press Low Start",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-bench-press-low-start.html",
+      "slug": "alternate-dumbbell-bench-press-low-start"
+    },
+    {
+      "name": "Alternate Dumbbell Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-flys.html",
+      "slug": "alternate-dumbbell-flys"
+    },
+    {
+      "name": "Alternate Dumbbell Hammer Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-hammer-preacher-curl.html",
+      "slug": "alternate-dumbbell-hammer-preacher-curl"
+    },
+    {
+      "name": "Alternate Dumbbell Lateral Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-lateral-raise.html",
+      "slug": "alternate-dumbbell-lateral-raise"
+    },
+    {
+      "name": "Alternate Dumbbell Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-preacher-curl.html",
+      "slug": "alternate-dumbbell-preacher-curl"
+    },
+    {
+      "name": "Alternate Dumbbell Reverse Fly On Incline Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-dumbbell-reverse-fly-on-incline-bench.html",
+      "slug": "alternate-dumbbell-reverse-fly-on-incline-bench"
+    },
+    {
+      "name": "Alternate Incline Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-incline-dumbbell-curl.html",
+      "slug": "alternate-incline-dumbbell-curl"
+    },
+    {
+      "name": "Alternate Incline Dumbbell Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-incline-dumbbell-flys.html",
+      "slug": "alternate-incline-dumbbell-flys"
+    },
+    {
+      "name": "Alternate Incline Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-incline-hammer-curl.html",
+      "slug": "alternate-incline-hammer-curl"
+    },
+    {
+      "name": "Alternate Lying Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-lying-dumbbell-extension.html",
+      "slug": "alternate-lying-dumbbell-extension"
+    },
+    {
+      "name": "Alternate Lying Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-lying-dumbbell-reverse-fly.html",
+      "slug": "alternate-lying-dumbbell-reverse-fly"
+    },
+    {
+      "name": "Alternate Reach And Catch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-reach-and-catch.html",
+      "slug": "alternate-reach-and-catch"
+    },
+    {
+      "name": "Alternate Seated Arnold Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-arnold-press.html",
+      "slug": "alternate-seated-arnold-press"
+    },
+    {
+      "name": "Alternate Seated Bent Over Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-bent-over-dumbbell-kickback.html",
+      "slug": "alternate-seated-bent-over-dumbbell-kickback"
+    },
+    {
+      "name": "Alternate Seated Bent Over Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-bent-over-dumbbell-reverse-fly.html",
+      "slug": "alternate-seated-bent-over-dumbbell-reverse-fly"
+    },
+    {
+      "name": "Alternate Seated Dumbbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-dumbbell-front-raise.html",
+      "slug": "alternate-seated-dumbbell-front-raise"
+    },
+    {
+      "name": "Alternate Seated Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-dumbbell-press.html",
+      "slug": "alternate-seated-dumbbell-press"
+    },
+    {
+      "name": "Alternate Seated Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-hammer-curl.html",
+      "slug": "alternate-seated-hammer-curl"
+    },
+    {
+      "name": "Alternate Seated Palms In Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-seated-palms-in-dumbbell-press.html",
+      "slug": "alternate-seated-palms-in-dumbbell-press"
+    },
+    {
+      "name": "Alternate Standing Arnold Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-standing-arnold-press.html",
+      "slug": "alternate-standing-arnold-press"
+    },
+    {
+      "name": "Alternate Standing Dumbbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-standing-dumbbell-front-raise.html",
+      "slug": "alternate-standing-dumbbell-front-raise"
+    },
+    {
+      "name": "Alternate Standing Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-standing-dumbbell-press.html",
+      "slug": "alternate-standing-dumbbell-press"
+    },
+    {
+      "name": "Alternate Standing Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/alternate-standing-hammer-curl.html",
+      "slug": "alternate-standing-hammer-curl"
+    },
+    {
+      "name": "Barbell Drag Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-drag-curl.html",
+      "slug": "barbell-drag-curl"
+    },
+    {
+      "name": "Barbell Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-hammer-curl.html",
+      "slug": "barbell-hammer-curl"
+    },
+    {
+      "name": "Barbell Jumping Squats",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-jumping-squats.html",
+      "slug": "barbell-jumping-squats"
+    },
+    {
+      "name": "Barbell Pullover And Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-pullover-and-press.html",
+      "slug": "barbell-pullover-and-press"
+    },
+    {
+      "name": "Barbell Side Bends",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-side-bends.html",
+      "slug": "barbell-side-bends"
+    },
+    {
+      "name": "Barbell Side Lunge",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-side-lunge.html",
+      "slug": "barbell-side-lunge"
+    },
+    {
+      "name": "Barbell Side Split Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-side-split-squat.html",
+      "slug": "barbell-side-split-squat"
+    },
+    {
+      "name": "Barbell Split Jump",
+      "nameFrench": null,
+      "primaryMuscle": "Hamstrings",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-split-jump.html",
+      "slug": "barbell-split-jump"
+    },
+    {
+      "name": "Barbell Step Ups",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/barbell-step-ups.html",
+      "slug": "barbell-step-ups"
+    },
+    {
+      "name": "Behind Neck Lat Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/behind-neck-lat-pull-down.html",
+      "slug": "behind-neck-lat-pull-down"
+    },
+    {
+      "name": "Bench Jack Knife",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bench-jack-knife.html",
+      "slug": "bench-jack-knife"
+    },
+    {
+      "name": "Bench One Leg Dumbbell Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bench-one-leg-dumbbell-squat.html",
+      "slug": "bench-one-leg-dumbbell-squat"
+    },
+    {
+      "name": "Bench Pushups",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bench-pushups.html",
+      "slug": "bench-pushups"
+    },
+    {
+      "name": "Bent Over Barbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bent-over-barbell-row.html",
+      "slug": "bent-over-barbell-row"
+    },
+    {
+      "name": "Bent Over Dumbbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bent-over-dumbbell-row.html",
+      "slug": "bent-over-dumbbell-row"
+    },
+    {
+      "name": "Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bent-over-row.html",
+      "slug": "bent-over-row"
+    },
+    {
+      "name": "Bodyweight Wall Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/bodyweight-wall-squat.html",
+      "slug": "bodyweight-wall-squat"
+    },
+    {
+      "name": "Cable Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/cable-calf-raise.html",
+      "slug": "cable-calf-raise"
+    },
+    {
+      "name": "Cable Concentration Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/cable-concentration-curl.html",
+      "slug": "cable-concentration-curl"
+    },
+    {
+      "name": "Cable Inner Chest Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/cable-inner-chest-press.html",
+      "slug": "cable-inner-chest-press"
+    },
+    {
+      "name": "Cable Tricep Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/cable-tricep-kickback.html",
+      "slug": "cable-tricep-kickback"
+    },
+    {
+      "name": "Chair Twisting Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/chair-twisting-knee-raise.html",
+      "slug": "chair-twisting-knee-raise"
+    },
+    {
+      "name": "Chest Dip",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/chest-dip.html",
+      "slug": "chest-dip"
+    },
+    {
+      "name": "Chin Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/chin-up.html",
+      "slug": "chin-up"
+    },
+    {
+      "name": "Clean Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/clean-press.html",
+      "slug": "clean-press"
+    },
+    {
+      "name": "Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-bench-press.html",
+      "slug": "close-grip-bench-press"
+    },
+    {
+      "name": "Close Grip Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-cable-curl.html",
+      "slug": "close-grip-cable-curl"
+    },
+    {
+      "name": "Close Grip Chest Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-chest-press.html",
+      "slug": "close-grip-chest-press"
+    },
+    {
+      "name": "Close Grip Ez Bar Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-ez-bar-curl.html",
+      "slug": "close-grip-ez-bar-curl"
+    },
+    {
+      "name": "Close Grip Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-pull-down.html",
+      "slug": "close-grip-pull-down"
+    },
+    {
+      "name": "Close Grip Pull Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-pull-up.html",
+      "slug": "close-grip-pull-up"
+    },
+    {
+      "name": "Close Grip Standing Barbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/close-grip-standing-barbell-curl.html",
+      "slug": "close-grip-standing-barbell-curl"
+    },
+    {
+      "name": "Decline Abdominal Reach",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-abdominal-reach.html",
+      "slug": "decline-abdominal-reach"
+    },
+    {
+      "name": "Decline Bench Alternate Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-alternate-knee-raise.html",
+      "slug": "decline-bench-alternate-knee-raise"
+    },
+    {
+      "name": "Decline Bench Alternate Leg Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-alternate-leg-raise.html",
+      "slug": "decline-bench-alternate-leg-raise"
+    },
+    {
+      "name": "Decline Bench Barbell Lunge",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-barbell-lunge.html",
+      "slug": "decline-bench-barbell-lunge"
+    },
+    {
+      "name": "Decline Bench Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-cable-crunch.html",
+      "slug": "decline-bench-cable-crunch"
+    },
+    {
+      "name": "Decline Bench Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-knee-raise.html",
+      "slug": "decline-bench-knee-raise"
+    },
+    {
+      "name": "Decline Bench Leg Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-bench-leg-raise.html",
+      "slug": "decline-bench-leg-raise"
+    },
+    {
+      "name": "Decline Cable Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-cable-flys.html",
+      "slug": "decline-cable-flys"
+    },
+    {
+      "name": "Decline Cable Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-cable-knee-raise.html",
+      "slug": "decline-cable-knee-raise"
+    },
+    {
+      "name": "Decline Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-close-grip-bench-press.html",
+      "slug": "decline-close-grip-bench-press"
+    },
+    {
+      "name": "Decline Dumbbell Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-dumbbell-flys.html",
+      "slug": "decline-dumbbell-flys"
+    },
+    {
+      "name": "Decline Dumbbell Situp",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-dumbbell-situp.html",
+      "slug": "decline-dumbbell-situp"
+    },
+    {
+      "name": "Decline Leg Raise With Hip Thrust",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-leg-raise-with-hip-thrust.html",
+      "slug": "decline-leg-raise-with-hip-thrust"
+    },
+    {
+      "name": "Decline Lying Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-lying-dumbbell-extension.html",
+      "slug": "decline-lying-dumbbell-extension"
+    },
+    {
+      "name": "Decline Lying Tricep Extension Skullcrusher",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-lying-tricep-extension-skullcrusher.html",
+      "slug": "decline-lying-tricep-extension-skullcrusher"
+    },
+    {
+      "name": "Decline Smith Machine Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-smith-machine-bench-press.html",
+      "slug": "decline-smith-machine-bench-press"
+    },
+    {
+      "name": "Decline Weighted Twist",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/decline-weighted-twist.html",
+      "slug": "decline-weighted-twist"
+    },
+    {
+      "name": "Deep Push Ups",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/deep-push-ups.html",
+      "slug": "deep-push-ups"
+    },
+    {
+      "name": "Deep Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/deep-squat.html",
+      "slug": "deep-squat"
+    },
+    {
+      "name": "Dublin Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dublin-press.html",
+      "slug": "dublin-press"
+    },
+    {
+      "name": "Dumbbell Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-bench-press.html",
+      "slug": "dumbbell-bench-press"
+    },
+    {
+      "name": "Dumbbell Deadlift",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-deadlift.html",
+      "slug": "dumbbell-deadlift"
+    },
+    {
+      "name": "Dumbbell Front Raise On Incline Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-front-raise-on-incline-bench.html",
+      "slug": "dumbbell-front-raise-on-incline-bench"
+    },
+    {
+      "name": "Dumbbell Hammer Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-hammer-preacher-curl.html",
+      "slug": "dumbbell-hammer-preacher-curl"
+    },
+    {
+      "name": "Dumbbell Jumping Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-jumping-squat.html",
+      "slug": "dumbbell-jumping-squat"
+    },
+    {
+      "name": "Dumbbell Lateral Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-lateral-raise.html",
+      "slug": "dumbbell-lateral-raise"
+    },
+    {
+      "name": "Dumbbell Pullover",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-pullover.html",
+      "slug": "dumbbell-pullover"
+    },
+    {
+      "name": "Dumbbell Split Jump",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-split-jump.html",
+      "slug": "dumbbell-split-jump"
+    },
+    {
+      "name": "Dumbbell Squat To Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-squat-to-bench.html",
+      "slug": "dumbbell-squat-to-bench"
+    },
+    {
+      "name": "Dumbbell Stiff Leg Deadlift On Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Hamstrings",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-stiff-leg-deadlift-on-bench.html",
+      "slug": "dumbbell-stiff-leg-deadlift-on-bench"
+    },
+    {
+      "name": "Dumbbell Wall Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/dumbbell-wall-squat.html",
+      "slug": "dumbbell-wall-squat"
+    },
+    {
+      "name": "Exercise Ball Dip",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-dip.html",
+      "slug": "exercise-ball-dip"
+    },
+    {
+      "name": "Exercise Ball Dumbbell Kickbacks",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-dumbbell-kickbacks.html",
+      "slug": "exercise-ball-dumbbell-kickbacks"
+    },
+    {
+      "name": "Exercise Ball Hip Roll",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-hip-roll.html",
+      "slug": "exercise-ball-hip-roll"
+    },
+    {
+      "name": "Exercise Ball Lateral Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-lateral-raise.html",
+      "slug": "exercise-ball-lateral-raise"
+    },
+    {
+      "name": "Exercise Ball Leg Tuck",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-leg-tuck.html",
+      "slug": "exercise-ball-leg-tuck"
+    },
+    {
+      "name": "Exercise Ball One Arm Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-one-arm-dumbbell-extension.html",
+      "slug": "exercise-ball-one-arm-dumbbell-extension"
+    },
+    {
+      "name": "Exercise Ball Two Arm Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/exercise-ball-two-arm-dumbbell-extension.html",
+      "slug": "exercise-ball-two-arm-dumbbell-extension"
+    },
+    {
+      "name": "Ez Bar Back Of The Head Lying Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/ez-bar-back-of-the-head-lying-tricep-extension.html",
+      "slug": "ez-bar-back-of-the-head-lying-tricep-extension"
+    },
+    {
+      "name": "Ez Bar Incline Skullcrusher",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/ez-bar-incline-skullcrusher.html",
+      "slug": "ez-bar-incline-skullcrusher"
+    },
+    {
+      "name": "Ez Bar Reverse Grip Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/ez-bar-reverse-grip-bent-over-row.html",
+      "slug": "ez-bar-reverse-grip-bent-over-row"
+    },
+    {
+      "name": "Ez Bar Skullcrusher",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/ez-bar-skullcrusher.html",
+      "slug": "ez-bar-skullcrusher"
+    },
+    {
+      "name": "Feet Forward Smith Machine Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/feet-forward-smith-machine-squat.html",
+      "slug": "feet-forward-smith-machine-squat"
+    },
+    {
+      "name": "Flat Bench Cable Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/flat-bench-cable-flys.html",
+      "slug": "flat-bench-cable-flys"
+    },
+    {
+      "name": "Floor Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/floor-bench-press.html",
+      "slug": "floor-bench-press"
+    },
+    {
+      "name": "Floor Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/floor-calf-raise.html",
+      "slug": "floor-calf-raise"
+    },
+    {
+      "name": "Front Squat To Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/front-squat-to-bench.html",
+      "slug": "front-squat-to-bench"
+    },
+    {
+      "name": "Good Mornings",
+      "nameFrench": null,
+      "primaryMuscle": "Glutes",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/good-mornings.html",
+      "slug": "good-mornings"
+    },
+    {
+      "name": "Guillotine Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/guillotine-press.html",
+      "slug": "guillotine-press"
+    },
+    {
+      "name": "Hack One Leg Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/hack-one-leg-calf-raise.html",
+      "slug": "hack-one-leg-calf-raise"
+    },
+    {
+      "name": "Hack Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/hack-squat.html",
+      "slug": "hack-squat"
+    },
+    {
+      "name": "Half Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/half-squat.html",
+      "slug": "half-squat"
+    },
+    {
+      "name": "Hammer Bar Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/hammer-bar-preacher-curl.html",
+      "slug": "hammer-bar-preacher-curl"
+    },
+    {
+      "name": "High Barbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/high-barbell-front-raise.html",
+      "slug": "high-barbell-front-raise"
+    },
+    {
+      "name": "High Inverted Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/high-inverted-row.html",
+      "slug": "high-inverted-row"
+    },
+    {
+      "name": "High Weight Plate Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/high-weight-plate-front-raise.html",
+      "slug": "high-weight-plate-front-raise"
+    },
+    {
+      "name": "Hip Thrusts",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/hip-thrusts.html",
+      "slug": "hip-thrusts"
+    },
+    {
+      "name": "Hyperextension",
+      "nameFrench": null,
+      "primaryMuscle": "Glutes",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/hyperextension.html",
+      "slug": "hyperextension"
+    },
+    {
+      "name": "Incline Bench Barbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-barbell-row.html",
+      "slug": "incline-bench-barbell-row"
+    },
+    {
+      "name": "Incline Bench Bodyweight Lunge",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-bodyweight-lunge.html",
+      "slug": "incline-bench-bodyweight-lunge"
+    },
+    {
+      "name": "Incline Bench Cable Row Rope Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-cable-row-rope-extension.html",
+      "slug": "incline-bench-cable-row-rope-extension"
+    },
+    {
+      "name": "Incline Bench Cable Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-cable-row.html",
+      "slug": "incline-bench-cable-row"
+    },
+    {
+      "name": "Incline Bench Dumbbell Lunge",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-dumbbell-lunge.html",
+      "slug": "incline-bench-dumbbell-lunge"
+    },
+    {
+      "name": "Incline Bench Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-hammer-curl.html",
+      "slug": "incline-bench-hammer-curl"
+    },
+    {
+      "name": "Incline Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-press.html",
+      "slug": "incline-bench-press"
+    },
+    {
+      "name": "Incline Bench Rope Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-rope-extension.html",
+      "slug": "incline-bench-rope-extension"
+    },
+    {
+      "name": "Incline Bench Two Arm Dumbbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-bench-two-arm-dumbbell-row.html",
+      "slug": "incline-bench-two-arm-dumbbell-row"
+    },
+    {
+      "name": "Incline Cable Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-cable-flys.html",
+      "slug": "incline-cable-flys"
+    },
+    {
+      "name": "Incline Cable Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-cable-tricep-extension.html",
+      "slug": "incline-cable-tricep-extension"
+    },
+    {
+      "name": "Incline Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-close-grip-bench-press.html",
+      "slug": "incline-close-grip-bench-press"
+    },
+    {
+      "name": "Incline Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-dumbbell-curl.html",
+      "slug": "incline-dumbbell-curl"
+    },
+    {
+      "name": "Incline Push Ups",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-push-ups.html",
+      "slug": "incline-push-ups"
+    },
+    {
+      "name": "Incline Swiss Ball Push Up",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/incline-swiss-ball-push-up.html",
+      "slug": "incline-swiss-ball-push-up"
+    },
+    {
+      "name": "Inline Bench French Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/inline-bench-french-press.html",
+      "slug": "inline-bench-french-press"
+    },
+    {
+      "name": "Knee Pushups",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/knee-pushups.html",
+      "slug": "knee-pushups"
+    },
+    {
+      "name": "Kneeling Overhead Tricep Extension Over Flat Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/kneeling-overhead-tricep-extension-over-flat-bench.html",
+      "slug": "kneeling-overhead-tricep-extension-over-flat-bench"
+    },
+    {
+      "name": "Lat Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lat-pull-down.html",
+      "slug": "lat-pull-down"
+    },
+    {
+      "name": "Lower Abdominal Hip Roll",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lower-abdominal-hip-roll.html",
+      "slug": "lower-abdominal-hip-roll"
+    },
+    {
+      "name": "Lying Alternate Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-alternate-knee-raise.html",
+      "slug": "lying-alternate-knee-raise"
+    },
+    {
+      "name": "Lying Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-crunch.html",
+      "slug": "lying-cable-crunch"
+    },
+    {
+      "name": "Lying Cable Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-front-raise.html",
+      "slug": "lying-cable-front-raise"
+    },
+    {
+      "name": "Lying Cable Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-knee-raise.html",
+      "slug": "lying-cable-knee-raise"
+    },
+    {
+      "name": "Lying Cable Pullover Rope Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-pullover-rope-extension.html",
+      "slug": "lying-cable-pullover-rope-extension"
+    },
+    {
+      "name": "Lying Cable Pullover",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-pullover.html",
+      "slug": "lying-cable-pullover"
+    },
+    {
+      "name": "Lying Cable Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-cable-tricep-extension.html",
+      "slug": "lying-cable-tricep-extension"
+    },
+    {
+      "name": "Lying Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-dumbbell-curl.html",
+      "slug": "lying-dumbbell-curl"
+    },
+    {
+      "name": "Lying Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-dumbbell-reverse-fly.html",
+      "slug": "lying-dumbbell-reverse-fly"
+    },
+    {
+      "name": "Lying Floor Leg Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-floor-leg-raise.html",
+      "slug": "lying-floor-leg-raise"
+    },
+    {
+      "name": "Lying Heel Touches",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-heel-touches.html",
+      "slug": "lying-heel-touches"
+    },
+    {
+      "name": "Lying High Pulley Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-high-pulley-cable-curl.html",
+      "slug": "lying-high-pulley-cable-curl"
+    },
+    {
+      "name": "Lying High Pulley Close Grip Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-high-pulley-close-grip-cable-curl.html",
+      "slug": "lying-high-pulley-close-grip-cable-curl"
+    },
+    {
+      "name": "Lying Rear Delt Barbell Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-rear-delt-barbell-raise.html",
+      "slug": "lying-rear-delt-barbell-raise"
+    },
+    {
+      "name": "Lying Single Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-single-dumbbell-extension.html",
+      "slug": "lying-single-dumbbell-extension"
+    },
+    {
+      "name": "Lying Wide Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/lying-wide-dumbbell-curl.html",
+      "slug": "lying-wide-dumbbell-curl"
+    },
+    {
+      "name": "Machine Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/machine-row.html",
+      "slug": "machine-row"
+    },
+    {
+      "name": "Machine T Bar Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/machine-t-bar-row.html",
+      "slug": "machine-t-bar-row"
+    },
+    {
+      "name": "Military Press Behind Neck",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/military-press-behind-neck.html",
+      "slug": "military-press-behind-neck"
+    },
+    {
+      "name": "Military Press",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/military-press.html",
+      "slug": "military-press"
+    },
+    {
+      "name": "Narrow Hack Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/narrow-hack-squat.html",
+      "slug": "narrow-hack-squat"
+    },
+    {
+      "name": "Narrow Smith Machine Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/narrow-smith-machine-squat.html",
+      "slug": "narrow-smith-machine-squat"
+    },
+    {
+      "name": "Narrow Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/narrow-squat.html",
+      "slug": "narrow-squat"
+    },
+    {
+      "name": "Narrow Stance 45 Degree Leg Press",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/narrow-stance-45-degree-leg-press.html",
+      "slug": "narrow-stance-45-degree-leg-press"
+    },
+    {
+      "name": "One Arm Bent Over Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-bent-over-dumbbell-kickback.html",
+      "slug": "one-arm-bent-over-dumbbell-kickback"
+    },
+    {
+      "name": "One Arm Bent Over Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-bent-over-dumbbell-reverse-fly.html",
+      "slug": "one-arm-bent-over-dumbbell-reverse-fly"
+    },
+    {
+      "name": "One Arm Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-bent-over-row.html",
+      "slug": "one-arm-bent-over-row"
+    },
+    {
+      "name": "One Arm Cable Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-cable-front-raise.html",
+      "slug": "one-arm-cable-front-raise"
+    },
+    {
+      "name": "One Arm Cable Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-cable-reverse-fly.html",
+      "slug": "one-arm-cable-reverse-fly"
+    },
+    {
+      "name": "One Arm Cable Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-cable-row.html",
+      "slug": "one-arm-cable-row"
+    },
+    {
+      "name": "One Arm Dumbbell Front Raise On Incline Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-front-raise-on-incline-bench.html",
+      "slug": "one-arm-dumbbell-front-raise-on-incline-bench"
+    },
+    {
+      "name": "One Arm Dumbbell Hammer Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-hammer-preacher-curl.html",
+      "slug": "one-arm-dumbbell-hammer-preacher-curl"
+    },
+    {
+      "name": "One Arm Dumbbell Reverse Fly On Incline Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-reverse-fly-on-incline-bench.html",
+      "slug": "one-arm-dumbbell-reverse-fly-on-incline-bench"
+    },
+    {
+      "name": "One Arm Dumbbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-dumbbell-row.html",
+      "slug": "one-arm-dumbbell-row"
+    },
+    {
+      "name": "One Arm Lying Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-lying-dumbbell-extension.html",
+      "slug": "one-arm-lying-dumbbell-extension"
+    },
+    {
+      "name": "One Arm Lying Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-lying-dumbbell-reverse-fly.html",
+      "slug": "one-arm-lying-dumbbell-reverse-fly"
+    },
+    {
+      "name": "One Arm Machine Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-machine-row.html",
+      "slug": "one-arm-machine-row"
+    },
+    {
+      "name": "One Arm Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-preacher-curl.html",
+      "slug": "one-arm-preacher-curl"
+    },
+    {
+      "name": "One Arm Pronated Dumbbell Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-pronated-dumbbell-extension.html",
+      "slug": "one-arm-pronated-dumbbell-extension"
+    },
+    {
+      "name": "One Arm Prone Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-prone-dumbbell-curl.html",
+      "slug": "one-arm-prone-dumbbell-curl"
+    },
+    {
+      "name": "One Arm Prone Hammer Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-prone-hammer-dumbbell-curl.html",
+      "slug": "one-arm-prone-hammer-dumbbell-curl"
+    },
+    {
+      "name": "One Arm Seated Arnold Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-arnold-press.html",
+      "slug": "one-arm-seated-arnold-press"
+    },
+    {
+      "name": "One Arm Seated Bent Over Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-bent-over-dumbbell-kickback.html",
+      "slug": "one-arm-seated-bent-over-dumbbell-kickback"
+    },
+    {
+      "name": "One Arm Seated Bent Over Dumbbell Reverse Fly",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-bent-over-dumbbell-reverse-fly.html",
+      "slug": "one-arm-seated-bent-over-dumbbell-reverse-fly"
+    },
+    {
+      "name": "One Arm Seated Dumbbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-dumbbell-front-raise.html",
+      "slug": "one-arm-seated-dumbbell-front-raise"
+    },
+    {
+      "name": "One Arm Seated Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-dumbbell-kickback.html",
+      "slug": "one-arm-seated-dumbbell-kickback"
+    },
+    {
+      "name": "One Arm Seated Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-dumbbell-press.html",
+      "slug": "one-arm-seated-dumbbell-press"
+    },
+    {
+      "name": "One Arm Seated Hammer Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-hammer-curl.html",
+      "slug": "one-arm-seated-hammer-curl"
+    },
+    {
+      "name": "One Arm Seated Overhead Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-overhead-tricep-extension.html",
+      "slug": "one-arm-seated-overhead-tricep-extension"
+    },
+    {
+      "name": "One Arm Seated Palms In Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-seated-palms-in-dumbbell-press.html",
+      "slug": "one-arm-seated-palms-in-dumbbell-press"
+    },
+    {
+      "name": "One Arm Standing Arnold Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-standing-arnold-press.html",
+      "slug": "one-arm-standing-arnold-press"
+    },
+    {
+      "name": "One Arm Standing Dumbbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-standing-dumbbell-front-raise.html",
+      "slug": "one-arm-standing-dumbbell-front-raise"
+    },
+    {
+      "name": "One Arm Standing Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-standing-dumbbell-press.html",
+      "slug": "one-arm-standing-dumbbell-press"
+    },
+    {
+      "name": "One Arm Standing Palms In Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-arm-standing-palms-in-dumbbell-press.html",
+      "slug": "one-arm-standing-palms-in-dumbbell-press"
+    },
+    {
+      "name": "One Leg 45 Degree Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-45-degree-calf-raise.html",
+      "slug": "one-leg-45-degree-calf-raise"
+    },
+    {
+      "name": "One Leg 45 Degree Leg Press",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-45-degree-leg-press.html",
+      "slug": "one-leg-45-degree-leg-press"
+    },
+    {
+      "name": "One Leg Barbell Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-barbell-squat.html",
+      "slug": "one-leg-barbell-squat"
+    },
+    {
+      "name": "One Leg Bodyweight Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-bodyweight-squat.html",
+      "slug": "one-leg-bodyweight-squat"
+    },
+    {
+      "name": "One Leg Bodyweight Wall Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-bodyweight-wall-squat.html",
+      "slug": "one-leg-bodyweight-wall-squat"
+    },
+    {
+      "name": "One Leg Cable Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-cable-calf-raise.html",
+      "slug": "one-leg-cable-calf-raise"
+    },
+    {
+      "name": "One Leg Hack Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-hack-squat.html",
+      "slug": "one-leg-hack-squat"
+    },
+    {
+      "name": "One Leg Lying Cable Hamstring Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Hamstrings",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-lying-cable-hamstring-curl.html",
+      "slug": "one-leg-lying-cable-hamstring-curl"
+    },
+    {
+      "name": "One Leg Lying Cable Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-lying-cable-knee-raise.html",
+      "slug": "one-leg-lying-cable-knee-raise"
+    },
+    {
+      "name": "One Leg Smith Machine Seated Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/one-leg-smith-machine-seated-calf-raise.html",
+      "slug": "one-leg-smith-machine-seated-calf-raise"
+    },
+    {
+      "name": "Overhead Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/overhead-squat.html",
+      "slug": "overhead-squat"
+    },
+    {
+      "name": "Palms In Decline Dumbbell Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/palms-in-decline-dumbbell-bench-press.html",
+      "slug": "palms-in-decline-dumbbell-bench-press"
+    },
+    {
+      "name": "Palms In Incline Dumbbell Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/palms-in-incline-dumbbell-bench-press.html",
+      "slug": "palms-in-incline-dumbbell-bench-press"
+    },
+    {
+      "name": "Prone Incline Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/prone-incline-dumbbell-curl.html",
+      "slug": "prone-incline-dumbbell-curl"
+    },
+    {
+      "name": "Reach And Catch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reach-and-catch.html",
+      "slug": "reach-and-catch"
+    },
+    {
+      "name": "Rear Delt Barbell Row To Neck",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/rear-delt-barbell-row-to-neck.html",
+      "slug": "rear-delt-barbell-row-to-neck"
+    },
+    {
+      "name": "Reverse Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-bench-press.html",
+      "slug": "reverse-grip-bench-press"
+    },
+    {
+      "name": "Reverse Grip Bent Over Dumbbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "DUMBBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-bent-over-dumbbell-row.html",
+      "slug": "reverse-grip-bent-over-dumbbell-row"
+    },
+    {
+      "name": "Reverse Grip Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-bent-over-row.html",
+      "slug": "reverse-grip-bent-over-row"
+    },
+    {
+      "name": "Reverse Grip Cable Tricep Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-cable-tricep-kickback.html",
+      "slug": "reverse-grip-cable-tricep-kickback"
+    },
+    {
+      "name": "Reverse Grip Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-close-grip-bench-press.html",
+      "slug": "reverse-grip-close-grip-bench-press"
+    },
+    {
+      "name": "Reverse Grip French Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-french-press.html",
+      "slug": "reverse-grip-french-press"
+    },
+    {
+      "name": "Reverse Grip Incline Bench Barbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-incline-bench-barbell-row.html",
+      "slug": "reverse-grip-incline-bench-barbell-row"
+    },
+    {
+      "name": "Reverse Grip Incline Bench Cable Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-incline-bench-cable-row.html",
+      "slug": "reverse-grip-incline-bench-cable-row"
+    },
+    {
+      "name": "Reverse Grip Incline Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-incline-bench-press.html",
+      "slug": "reverse-grip-incline-bench-press"
+    },
+    {
+      "name": "Reverse Grip Incline Bench Two Arm Dumbbell Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-incline-bench-two-arm-dumbbell-row.html",
+      "slug": "reverse-grip-incline-bench-two-arm-dumbbell-row"
+    },
+    {
+      "name": "Reverse Grip Lat Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-lat-pull-down.html",
+      "slug": "reverse-grip-lat-pull-down"
+    },
+    {
+      "name": "Reverse Grip One Arm Seated Overhead Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-one-arm-seated-overhead-tricep-extension.html",
+      "slug": "reverse-grip-one-arm-seated-overhead-tricep-extension"
+    },
+    {
+      "name": "Reverse Grip One Arm Standing Overhead Cable Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-one-arm-standing-overhead-cable-tricep-extension.html",
+      "slug": "reverse-grip-one-arm-standing-overhead-cable-tricep-extension"
+    },
+    {
+      "name": "Reverse Grip Seated French Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-seated-french-press.html",
+      "slug": "reverse-grip-seated-french-press"
+    },
+    {
+      "name": "Reverse Grip Skullcrusher",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-skullcrusher.html",
+      "slug": "reverse-grip-skullcrusher"
+    },
+    {
+      "name": "Reverse Grip Smith Machine Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/reverse-grip-smith-machine-bent-over-row.html",
+      "slug": "reverse-grip-smith-machine-bent-over-row"
+    },
+    {
+      "name": "Rope Cable Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/rope-cable-preacher-curl.html",
+      "slug": "rope-cable-preacher-curl"
+    },
+    {
+      "name": "Rope Crossover Seated Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/rope-crossover-seated-row.html",
+      "slug": "rope-crossover-seated-row"
+    },
+    {
+      "name": "Rope Pull Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/rope-pull-up.html",
+      "slug": "rope-pull-up"
+    },
+    {
+      "name": "Seated Alternate Dumbbell Lateral Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-alternate-dumbbell-lateral-raise.html",
+      "slug": "seated-alternate-dumbbell-lateral-raise"
+    },
+    {
+      "name": "Seated Alternating Front Back Barbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-alternating-front-back-barbell-press.html",
+      "slug": "seated-alternating-front-back-barbell-press"
+    },
+    {
+      "name": "Seated Arnold Press",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-arnold-press.html",
+      "slug": "seated-arnold-press"
+    },
+    {
+      "name": "Seated Barbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-barbell-curl.html",
+      "slug": "seated-barbell-curl"
+    },
+    {
+      "name": "Seated Barbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-barbell-front-raise.html",
+      "slug": "seated-barbell-front-raise"
+    },
+    {
+      "name": "Seated Bent Over Dumbbell Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-bent-over-dumbbell-kickback.html",
+      "slug": "seated-bent-over-dumbbell-kickback"
+    },
+    {
+      "name": "Seated Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-cable-crunch.html",
+      "slug": "seated-cable-crunch"
+    },
+    {
+      "name": "Seated Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-cable-curl.html",
+      "slug": "seated-cable-curl"
+    },
+    {
+      "name": "Seated Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-calf-raise.html",
+      "slug": "seated-calf-raise"
+    },
+    {
+      "name": "Seated Dumbbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-dumbbell-front-raise.html",
+      "slug": "seated-dumbbell-front-raise"
+    },
+    {
+      "name": "Seated High Barbell Front Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-high-barbell-front-raise.html",
+      "slug": "seated-high-barbell-front-raise"
+    },
+    {
+      "name": "Seated High Cable Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-high-cable-row.html",
+      "slug": "seated-high-cable-row"
+    },
+    {
+      "name": "Seated One Arm Dumbbell Lateral Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-one-arm-dumbbell-lateral-raise.html",
+      "slug": "seated-one-arm-dumbbell-lateral-raise"
+    },
+    {
+      "name": "Seated Row Using Rope",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-row-using-rope.html",
+      "slug": "seated-row-using-rope"
+    },
+    {
+      "name": "Seated Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/seated-row.html",
+      "slug": "seated-row"
+    },
+    {
+      "name": "Side Crunch With Leg Lift",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/side-crunch-with-leg-lift.html",
+      "slug": "side-crunch-with-leg-lift"
+    },
+    {
+      "name": "Single Bench Dip",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/single-bench-dip.html",
+      "slug": "single-bench-dip"
+    },
+    {
+      "name": "Single Leg Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/single-leg-extension.html",
+      "slug": "single-leg-extension"
+    },
+    {
+      "name": "Sissy Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/sissy-squat.html",
+      "slug": "sissy-squat"
+    },
+    {
+      "name": "Sit Up",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/sit-up.html",
+      "slug": "sit-up"
+    },
+    {
+      "name": "Smith Machine Bent Over Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-bent-over-row.html",
+      "slug": "smith-machine-bent-over-row"
+    },
+    {
+      "name": "Smith Machine Bodyweight Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-bodyweight-row.html",
+      "slug": "smith-machine-bodyweight-row"
+    },
+    {
+      "name": "Smith Machine Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-close-grip-bench-press.html",
+      "slug": "smith-machine-close-grip-bench-press"
+    },
+    {
+      "name": "Smith Machine Deadlift",
+      "nameFrench": null,
+      "primaryMuscle": "Lower Back",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "MACHINE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-deadlift.html",
+      "slug": "smith-machine-deadlift"
+    },
+    {
+      "name": "Smith Machine One Leg Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-one-leg-squat.html",
+      "slug": "smith-machine-one-leg-squat"
+    },
+    {
+      "name": "Smith Machine Reverse Close Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-reverse-close-grip-bench-press.html",
+      "slug": "smith-machine-reverse-close-grip-bench-press"
+    },
+    {
+      "name": "Smith Machine Shoulder Press Behind Neck",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-shoulder-press-behind-neck.html",
+      "slug": "smith-machine-shoulder-press-behind-neck"
+    },
+    {
+      "name": "Smith Machine Squat To Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-squat-to-bench.html",
+      "slug": "smith-machine-squat-to-bench"
+    },
+    {
+      "name": "Smith Machine Wide Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-wide-grip-bench-press.html",
+      "slug": "smith-machine-wide-grip-bench-press"
+    },
+    {
+      "name": "Smith Machine Zercher Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/smith-machine-zercher-squat.html",
+      "slug": "smith-machine-zercher-squat"
+    },
+    {
+      "name": "Speed Squats",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/speed-squats.html",
+      "slug": "speed-squats"
+    },
+    {
+      "name": "Squat To Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/squat-to-bench.html",
+      "slug": "squat-to-bench"
+    },
+    {
+      "name": "Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/squat.html",
+      "slug": "squat"
+    },
+    {
+      "name": "Squatting Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/squatting-cable-curl.html",
+      "slug": "squatting-cable-curl"
+    },
+    {
+      "name": "Standing Barbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-barbell-curl.html",
+      "slug": "standing-barbell-curl"
+    },
+    {
+      "name": "Standing Barbell Twist",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-barbell-twist.html",
+      "slug": "standing-barbell-twist"
+    },
+    {
+      "name": "Standing Dublin Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-dublin-press.html",
+      "slug": "standing-dublin-press"
+    },
+    {
+      "name": "Standing Low Pulley Overhead Tricep Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-low-pulley-overhead-tricep-extension.html",
+      "slug": "standing-low-pulley-overhead-tricep-extension"
+    },
+    {
+      "name": "Standing Oblique Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-oblique-cable-crunch.html",
+      "slug": "standing-oblique-cable-crunch"
+    },
+    {
+      "name": "Standing One Arm Cable Row",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-one-arm-cable-row.html",
+      "slug": "standing-one-arm-cable-row"
+    },
+    {
+      "name": "Standing Palms In Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-palms-in-dumbbell-press.html",
+      "slug": "standing-palms-in-dumbbell-press"
+    },
+    {
+      "name": "Standing Two Arm Tricep Cable Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/standing-two-arm-tricep-cable-extension.html",
+      "slug": "standing-two-arm-tricep-cable-extension"
+    },
+    {
+      "name": "Stiff Leg Deadlift Aka Romanian Deadlift",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BARBELL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-aka-romanian-deadlift.html",
+      "slug": "stiff-leg-deadlift-aka-romanian-deadlift"
+    },
+    {
+      "name": "Stiff Leg Deadlift On Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Hamstrings",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/stiff-leg-deadlift-on-bench.html",
+      "slug": "stiff-leg-deadlift-on-bench"
+    },
+    {
+      "name": "Straight Arm Lat Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "CABLE",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/straight-arm-lat-pull-down.html",
+      "slug": "straight-arm-lat-pull-down"
+    },
+    {
+      "name": "Sumo Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/sumo-squat.html",
+      "slug": "sumo-squat"
+    },
+    {
+      "name": "Swiss Ball Barbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-barbell-press.html",
+      "slug": "swiss-ball-barbell-press"
+    },
+    {
+      "name": "Swiss Ball Cable Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-cable-flys.html",
+      "slug": "swiss-ball-cable-flys"
+    },
+    {
+      "name": "Swiss Ball Dumbbell Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-dumbbell-bench-press.html",
+      "slug": "swiss-ball-dumbbell-bench-press"
+    },
+    {
+      "name": "Swiss Ball Dumbbell Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-dumbbell-curl.html",
+      "slug": "swiss-ball-dumbbell-curl"
+    },
+    {
+      "name": "Swiss Ball Dumbbell Flys",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-dumbbell-flys.html",
+      "slug": "swiss-ball-dumbbell-flys"
+    },
+    {
+      "name": "Swiss Ball Dumbbell Press",
+      "nameFrench": null,
+      "primaryMuscle": "Shoulders",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-dumbbell-press.html",
+      "slug": "swiss-ball-dumbbell-press"
+    },
+    {
+      "name": "Swiss Ball French Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-french-press.html",
+      "slug": "swiss-ball-french-press"
+    },
+    {
+      "name": "Swiss Ball Hover",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-hover.html",
+      "slug": "swiss-ball-hover"
+    },
+    {
+      "name": "Swiss Ball Push Up",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-push-up.html",
+      "slug": "swiss-ball-push-up"
+    },
+    {
+      "name": "Swiss Ball Wall Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/swiss-ball-wall-squat.html",
+      "slug": "swiss-ball-wall-squat"
+    },
+    {
+      "name": "Three Bench Dip",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/three-bench-dip.html",
+      "slug": "three-bench-dip"
+    },
+    {
+      "name": "Toes In 45 Degree Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-in-45-degree-calf-raise.html",
+      "slug": "toes-in-45-degree-calf-raise"
+    },
+    {
+      "name": "Toes In Leg Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-in-leg-extension.html",
+      "slug": "toes-in-leg-extension"
+    },
+    {
+      "name": "Toes In Smith Machine Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-in-smith-machine-calf-raise.html",
+      "slug": "toes-in-smith-machine-calf-raise"
+    },
+    {
+      "name": "Toes Out 45 Degree Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-out-45-degree-calf-raise.html",
+      "slug": "toes-out-45-degree-calf-raise"
+    },
+    {
+      "name": "Toes Out Leg Extension",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-out-leg-extension.html",
+      "slug": "toes-out-leg-extension"
+    },
+    {
+      "name": "Toes Out Smith Machine Calf Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Calves",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/toes-out-smith-machine-calf-raise.html",
+      "slug": "toes-out-smith-machine-calf-raise"
+    },
+    {
+      "name": "Twisting Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/twisting-cable-crunch.html",
+      "slug": "twisting-cable-crunch"
+    },
+    {
+      "name": "Twisting Decline Sit Up",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/twisting-decline-sit-up.html",
+      "slug": "twisting-decline-sit-up"
+    },
+    {
+      "name": "Twisting Dumbbell Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/twisting-dumbbell-bench-press.html",
+      "slug": "twisting-dumbbell-bench-press"
+    },
+    {
+      "name": "Twisting Floor Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/twisting-floor-crunch.html",
+      "slug": "twisting-floor-crunch"
+    },
+    {
+      "name": "Twisting Lying Cable Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/twisting-lying-cable-crunch.html",
+      "slug": "twisting-lying-cable-crunch"
+    },
+    {
+      "name": "Two Arm Cable Curl On Incline Bench",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/two-arm-cable-curl-on-incline-bench.html",
+      "slug": "two-arm-cable-curl-on-incline-bench"
+    },
+    {
+      "name": "Two Arm Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/two-arm-cable-curl.html",
+      "slug": "two-arm-cable-curl"
+    },
+    {
+      "name": "Two Arm Cable Tricep Kickback",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/two-arm-cable-tricep-kickback.html",
+      "slug": "two-arm-cable-tricep-kickback"
+    },
+    {
+      "name": "Underhand Close Grip Lat Pull Down",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/underhand-close-grip-lat-pull-down.html",
+      "slug": "underhand-close-grip-lat-pull-down"
+    },
+    {
+      "name": "V Bar Pull Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/v-bar-pull-up.html",
+      "slug": "v-bar-pull-up"
+    },
+    {
+      "name": "Walking Barbell Lunge",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/walking-barbell-lunge.html",
+      "slug": "walking-barbell-lunge"
+    },
+    {
+      "name": "Weighted Bench Dips",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-bench-dips.html",
+      "slug": "weighted-bench-dips"
+    },
+    {
+      "name": "Weighted Chair Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-chair-knee-raise.html",
+      "slug": "weighted-chair-knee-raise"
+    },
+    {
+      "name": "Weighted Crunch",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-crunch.html",
+      "slug": "weighted-crunch"
+    },
+    {
+      "name": "Weighted Exercise Ball Sit Up",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-exercise-ball-sit-up.html",
+      "slug": "weighted-exercise-ball-sit-up"
+    },
+    {
+      "name": "Weighted Hanging Knee Raise",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-hanging-knee-raise.html",
+      "slug": "weighted-hanging-knee-raise"
+    },
+    {
+      "name": "Weighted Side Touches",
+      "nameFrench": null,
+      "primaryMuscle": "Abdominaux",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-side-touches.html",
+      "slug": "weighted-side-touches"
+    },
+    {
+      "name": "Weighted Sissy Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-sissy-squat.html",
+      "slug": "weighted-sissy-squat"
+    },
+    {
+      "name": "Weighted Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-squat.html",
+      "slug": "weighted-squat"
+    },
+    {
+      "name": "Weighted Swiss Ball Wall Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "EXERCISE-BALL",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-swiss-ball-wall-squat.html",
+      "slug": "weighted-swiss-ball-wall-squat"
+    },
+    {
+      "name": "Weighted Three Bench Dips",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-three-bench-dips.html",
+      "slug": "weighted-three-bench-dips"
+    },
+    {
+      "name": "Weighted Tricep Dips",
+      "nameFrench": null,
+      "primaryMuscle": "Triceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/weighted-tricep-dips.html",
+      "slug": "weighted-tricep-dips"
+    },
+    {
+      "name": "Wide Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-bench-press.html",
+      "slug": "wide-grip-bench-press"
+    },
+    {
+      "name": "Wide Grip Cable Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-cable-curl.html",
+      "slug": "wide-grip-cable-curl"
+    },
+    {
+      "name": "Wide Grip Chin Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-chin-up.html",
+      "slug": "wide-grip-chin-up"
+    },
+    {
+      "name": "Wide Grip Ez Bar Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "EZ-BAR",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-ez-bar-curl.html",
+      "slug": "wide-grip-ez-bar-curl"
+    },
+    {
+      "name": "Wide Grip Pull Up",
+      "nameFrench": null,
+      "primaryMuscle": "Dos",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-pull-up.html",
+      "slug": "wide-grip-pull-up"
+    },
+    {
+      "name": "Wide Grip Push Ups",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-grip-push-ups.html",
+      "slug": "wide-grip-push-ups"
+    },
+    {
+      "name": "Wide Hack Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-hack-squat.html",
+      "slug": "wide-hack-squat"
+    },
+    {
+      "name": "Wide Reverse Grip Bench Press",
+      "nameFrench": null,
+      "primaryMuscle": "Pectoraux",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-reverse-grip-bench-press.html",
+      "slug": "wide-reverse-grip-bench-press"
+    },
+    {
+      "name": "Wide Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-squat.html",
+      "slug": "wide-squat"
+    },
+    {
+      "name": "Wide Stance 45 Degree Leg Press",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/wide-stance-45-degree-leg-press.html",
+      "slug": "wide-stance-45-degree-leg-press"
+    },
+    {
+      "name": "Zerchers Squat",
+      "nameFrench": null,
+      "primaryMuscle": "Quadriceps",
+      "synergistMuscles": [],
+      "mechanics": "COMPOUND",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/zerchers-squat.html",
+      "slug": "zerchers-squat"
+    },
+    {
+      "name": "Zottman Preacher Curl",
+      "nameFrench": null,
+      "primaryMuscle": "Biceps",
+      "synergistMuscles": [],
+      "mechanics": "ISOLATION",
+      "equipment": "BODYWEIGHT",
+      "msVideoUrl": "https://www.muscleandstrength.com/exercises/zottman-preacher-curl.html",
+      "slug": "zottman-preacher-curl"
+    }
+  ]
+}
