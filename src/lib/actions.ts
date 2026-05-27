@@ -1282,3 +1282,62 @@ export async function generateCustomWorkoutAction(formData: FormData) {
     durationMinutes: duration,
   })
 }
+
+// ─── ADMIN ────────────────────────────────────────────
+
+const ADMIN_USER_ID = process.env.ADMIN_USER_ID
+
+export async function isAdmin(): Promise<boolean> {
+  if (!ADMIN_USER_ID) return false
+  const profile = await getCurrentProfile()
+  return profile?.id === ADMIN_USER_ID
+}
+
+export async function getAdminStats() {
+  const supabase = getSupabaseAdmin()
+
+  const [
+    { count: totalUsers },
+    { count: totalProfilesWithPlans },
+    { count: totalWorkoutPlans },
+    { count: totalWorkoutSessions },
+    { count: totalCompletions },
+    { count: totalDailyMeals },
+    { count: totalWeightLogs },
+  ] = await Promise.all([
+    supabase.from("fit_user_profiles").select("*", { count: "exact", head: true }),
+    supabase.from("fit_user_profiles").select("*", { count: "exact", head: true }).not("workout_plan_id", "is", null),
+    supabase.from("fit_workout_plans").select("*", { count: "exact", head: true }),
+    supabase.from("fit_workout_sessions").select("*", { count: "exact", head: true }),
+    supabase.from("fit_workout_completions").select("*", { count: "exact", head: true }),
+    supabase.from("fit_daily_meals").select("*", { count: "exact", head: true }),
+    supabase.from("fit_weight_logs").select("*", { count: "exact", head: true }),
+  ])
+
+  const { data: recentUsers } = await supabase
+    .from("fit_user_profiles")
+    .select("id, gender, goal, age, current_weight_kg, height_cm, created_at")
+    .order("created_at", { ascending: false })
+    .limit(10)
+
+  const { data: goalBreakdown } = await supabase
+    .from("fit_user_profiles")
+    .select("goal")
+
+  const goalCounts: Record<string, number> = {}
+  for (const u of goalBreakdown ?? []) {
+    goalCounts[u.goal] = (goalCounts[u.goal] ?? 0) + 1
+  }
+
+  return {
+    totalUsers: totalUsers ?? 0,
+    usersWithPlan: totalProfilesWithPlans ?? 0,
+    totalWorkoutPlans: totalWorkoutPlans ?? 0,
+    totalWorkoutSessions: totalWorkoutSessions ?? 0,
+    totalCompletions: totalCompletions ?? 0,
+    totalDailyMeals: totalDailyMeals ?? 0,
+    totalWeightLogs: totalWeightLogs ?? 0,
+    recentUsers: recentUsers ?? [],
+    goalBreakdown: goalCounts,
+  }
+}

@@ -2,6 +2,8 @@ import { getSupabaseAdmin } from "@/lib/supabase-admin"
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 
+const ADMIN_USER_ID = process.env.ADMIN_USER_ID
+
 export async function GET() {
   const cookieStore = cookies()
   const userId = cookieStore.get("fit_user_id")?.value
@@ -14,5 +16,10 @@ export async function GET() {
     .eq("clerk_user_id", userId)
     .single()
 
-  return NextResponse.json(data)
+  if (!data) return NextResponse.json(null, { status: 401 })
+
+  return NextResponse.json({
+    ...data,
+    admin: ADMIN_USER_ID ? data.id === ADMIN_USER_ID : false,
+  })
 }
