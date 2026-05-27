@@ -4,6 +4,7 @@ import { useState } from "react"
 import { getWarmUp, getWarmUpType, type WarmUpExercise } from "@/lib/warmup"
 import { toggleExerciseCompletion } from "@/lib/actions"
 import { Modal } from "@/components/ui"
+import { RestTimer } from "@/components/workout/RestTimer"
 
 interface Props {
   dayData: {
@@ -207,19 +208,8 @@ export function DayDetailClient({ dayData, dayNum, plan, dateStr, initialComplet
           </div>
         )}
 
-        {/* Repos intercalé */}
-        {d.label && (
-          <div className="flex items-center gap-4 rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100/50 p-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white font-mono text-sm font-bold shadow-sm">
-              00:30
-            </div>
-            <div className="flex-1">
-              <p className="text-sm font-bold text-emerald-700">Repos</p>
-              <p className="text-[11px] text-emerald-500">Récupérez entre l&apos;échauffement et la séance</p>
-            </div>
-            <span className="text-xs font-medium text-emerald-600">0:30</span>
-          </div>
-        )}
+        {/* Chronomètre de repos */}
+        <RestTimer defaultSeconds={d.exercises[0]?.rest_seconds ?? 60} />
 
         {/* Workout */}
         <div>

@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui"
 import { WeightChart, WaterTracker } from "@/components/dashboard"
 import { getCurrentProfile, getWeightHistory, getDailyMeals, getNutritionPlan } from "@/lib/actions"
 import { calculateBMI, getWaterRecommendation } from "@/lib/calculations"
+import { ProgressPhotos } from "@/components/dashboard/ProgressPhotos"
 
 export default async function DashboardProgresPage() {
   const [profile, weightHistory] = await Promise.all([
@@ -48,6 +49,19 @@ export default async function DashboardProgresPage() {
             </CardHeader>
             <WeightChart data={weightHistory} />
           </Card>
+
+          {/* Progression photos */}
+          {(profile.current_physique_image_url || profile.goal_image_url) && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Mes photos de progression</CardTitle>
+              </CardHeader>
+              <ProgressPhotos
+                currentPhysiqueUrl={profile.current_physique_image_url}
+                goalImageUrl={profile.goal_image_url}
+              />
+            </Card>
+          )}
 
           {/* Eau */}
           <Card>
