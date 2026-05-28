@@ -883,7 +883,30 @@ export async function suggestMeals() {
   return { suggestions: suggestions.slice(0, 5), targetMeal }
 }
 
-// ─── REGÉNÉRER PLAN NUTRITIONNEL ─────────────────────
+// ─── GÉNÉRATION PLAN NUTRITIONNEL ─────────────────────
+
+export async function generateNutritionPlan(
+  profileId: string,
+  nutrition: { targetCalories: number; proteinG: number; carbsG: number; fatG: number },
+  mealsPerDay: number,
+  _dietaryRestrictions?: string[],
+) {
+  const supabase = getSupabaseAdmin()
+
+  const { error } = await supabase.from("fit_nutrition_plans").upsert(
+    {
+      user_profile_id: profileId,
+      meals_per_day: mealsPerDay,
+      total_calories: nutrition.targetCalories,
+      protein_g: nutrition.proteinG,
+      carbs_g: nutrition.carbsG,
+      fat_g: nutrition.fatG,
+    },
+    { onConflict: "user_profile_id", ignoreDuplicates: false },
+  )
+
+  if (error) throw new Error(error.message)
+}
 
 export async function regenerateNutritionPlan() {
   const profile = await getCurrentProfile()
