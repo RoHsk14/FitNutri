@@ -1,7 +1,7 @@
 "use server"
 
 import { getSupabaseServerClient, getSupabaseReadonlyClient } from "./supabase-server"
-import { getSupabaseAdmin, ensureBucket } from "./supabase-admin"
+import { getSupabaseAdmin, ensureBucket, STORAGE_BUCKET } from "./supabase-admin"
 import { calculateNutrition, getWaterRecommendation, estimateDuration } from "./calculations"
 import { onboardingSchema, weightLogSchema, profileUpdateSchema } from "./validation"
 import { getWorkoutSplit, getSessionsPerWeek } from "./workout-splits"
@@ -1529,4 +1529,29 @@ export async function getAdminStats() {
     recentUsers: recentUsers ?? [],
     goalBreakdown: goalCounts,
   }
+}
+
+// ─── UPLOADS ─────────────────────────────────────────
+
+export async function uploadImage(formData: FormData): Promise<string> {
+  const file = formData.get("file") as File | null
+  if (!file) throw new Error("Aucun fichier fourni")
+
+  const supabase = getSupabaseAdmin()
+  await ensureBucket()
+
+  const ext = file.name.split(".").pop() ?? "jpg"
+  const filePath = `${crypto.randomUUID()}.${ext}`
+
+  const { error } = await supabase.storage
+    .from(STORAGE_BUCKET)
+    .upload(filePath, file, { contentType: file.type })
+
+  if (error) throw new Error(error.message)
+
+  const { data: { publicUrl } } = supabase.storage
+    .from(STORAGE_BUCKET)
+    .getPublicUrl(filePath)
+
+  return publicUrl
 }
