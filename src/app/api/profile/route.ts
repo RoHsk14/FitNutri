@@ -1,25 +1,35 @@
-import { getSupabaseAdmin } from "@/lib/supabase-admin"
+import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
-
-const ADMIN_USER_ID = process.env.ADMIN_USER_ID
+import { getSupabaseAdmin } from "@/lib/supabase-admin"
 
 export async function GET() {
   const cookieStore = cookies()
-  const userId = cookieStore.get("fit_user_id")?.value
-  if (!userId) return NextResponse.json(null, { status: 401 })
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return cookieStore.getAll() },
+        setAll() {},
+      },
+    }
+  )
 
-  const supabase = getSupabaseAdmin()
-  const { data } = await supabase
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return NextResponse.json(null, { status: 401 })
+
+  const admin = getSupabaseAdmin()
+  const { data } = await admin
     .from("fit_user_profiles")
-    .select("id, goal, age, target_calories")
-    .eq("clerk_user_id", userId)
+    .select("id, name, goal, age, target_calories, is_admin")
+    .eq("clerk_user_id", user.id)
     .single()
 
   if (!data) return NextResponse.json(null, { status: 401 })
 
   return NextResponse.json({
     ...data,
-    admin: ADMIN_USER_ID ? data.id === ADMIN_USER_ID : false,
+    admin: data.is_admin,
   })
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useTheme } from "./ThemeProvider"
+import { useSidebar } from "./Sidebar"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
@@ -19,11 +20,16 @@ const HEADER_TITLES: Record<string, string> = {
 
 export function Header() {
   const { theme, toggle } = useTheme()
+  const { setMobileOpen } = useSidebar()
   const pathname = usePathname()
   const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [profile, setProfile] = useState<{ id: string } | null>(null)
+  const [profile, setProfile] = useState<{ id: string; name?: string | null } | null>(null)
+  const [unreadCount, setUnreadCount] = useState(0)
+  const [notifOpen, setNotifOpen] = useState(false)
+  const [notifications, setNotifications] = useState<{ id: string; title: string; body?: string | null; link?: string | null; is_read: boolean; created_at: string }[]>([])
   const menuRef = useRef<HTMLDivElement>(null)
+  const notifRef = useRef<HTMLDivElement>(null)
 
   const title =
     HEADER_TITLES[pathname] ||
@@ -40,27 +46,63 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    const fetchCount = async () => {
+      try {
+        const { getUnreadNotificationCount } = await import("@/lib/actions")
+        const count = await getUnreadNotificationCount()
+        setUnreadCount(count)
+      } catch {}
+    }
+    fetchCount()
+    const interval = setInterval(fetchCount, 30000)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false)
       }
+      if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
+        setNotifOpen(false)
+      }
     }
-    if (menuOpen) document.addEventListener("mousedown", handleClick)
+    if (menuOpen || notifOpen) document.addEventListener("mousedown", handleClick)
     return () => document.removeEventListener("mousedown", handleClick)
-  }, [menuOpen])
+  }, [menuOpen, notifOpen])
 
   async function handleDisconnect() {
     setMenuOpen(false)
-    await fetch("/api/clear-session", { method: "POST" })
-    router.push("/onboarding")
-    router.refresh()
+    try {
+      const res = await fetch("/api/auth/signout", { method: "POST" })
+      if (res.ok) {
+        router.push("/login")
+        router.refresh()
+      }
+    } catch {}
   }
 
-  const initials = profile?.id ? profile.id.substring(0, 2).toUpperCase() : "U"
+  const initials = profile?.name
+    ? profile.name.substring(0, 2).toUpperCase()
+    : profile?.id
+      ? profile.id.substring(0, 2).toUpperCase()
+      : "U"
 
   return (
-    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-gray-200 bg-white px-4 lg:px-6">
-      <h1 className="truncate text-lg font-semibold text-gray-900">{title}</h1>
+    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-gray-200 bg-white/80 backdrop-blur-md px-4 lg:px-6">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => setMobileOpen(true)}
+          className="rounded-xl p-2 text-gray-500 hover:bg-gray-100 active:bg-gray-200 transition-colors lg:hidden"
+          aria-label="Ouvrir le menu"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+        <h1 className="truncate text-lg font-semibold text-gray-900">{title}</h1>
+      </div>
 
       <div className="flex items-center gap-2">
         <button
@@ -79,18 +121,102 @@ export function Header() {
           )}
         </button>
 
-        <Link
-          href="/notifications"
-          className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 transition-colors relative"
-          aria-label="Notifications"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-          </svg>
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
-            3
-          </span>
-        </Link>
+        <div className="relative" ref={notifRef}>
+          <button
+            onClick={async () => {
+              const next = !notifOpen
+              setNotifOpen(next)
+              if (next) {
+                const { getNotifications } = await import("@/lib/actions")
+                const data = await getNotifications(5)
+                setNotifications(data)
+                // reset unread count optimistically
+                const unread = data.filter(n => !n.is_read).length
+                setUnreadCount(unread)
+              }
+            }}
+            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 transition-colors relative"
+            aria-label="Notifications"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+            {unreadCount > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+                {unreadCount > 9 ? "9+" : unreadCount}
+              </span>
+            )}
+          </button>
+
+          {notifOpen && (
+            <div className="absolute right-0 top-10 z-50 w-80 rounded-xl border border-gray-200 bg-white shadow-lg">
+              <div className="border-b border-gray-100 px-4 py-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                  Notifications
+                </p>
+              </div>
+
+              <div className="max-h-[320px] overflow-y-auto">
+                {notifications.length === 0 ? (
+                  <div className="px-4 py-8 text-center">
+                    <p className="text-sm text-gray-400">Aucune notification</p>
+                  </div>
+                ) : (
+                  <div className="divide-y divide-gray-50">
+                    {notifications.map(n => (
+                      <button
+                        key={n.id}
+                        type="button"
+                        onClick={async () => {
+                          if (!n.is_read) {
+                            const { markNotificationRead } = await import("@/lib/actions")
+                            await markNotificationRead(n.id)
+                            setNotifications(prev => prev.map(x => x.id === n.id ? { ...x, is_read: true } : x))
+                            setUnreadCount(prev => Math.max(0, prev - 1))
+                          }
+                          if (n.link) {
+                            setNotifOpen(false)
+                            router.push(n.link)
+                          }
+                        }}
+                        className={`w-full text-left px-4 py-3 transition-colors ${
+                          n.is_read ? "hover:bg-gray-50" : "bg-primary-50/30 hover:bg-primary-50/60"
+                        }`}
+                      >
+                        <div className="flex items-start gap-2">
+                          <div className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${
+                            n.is_read ? "bg-transparent" : "bg-primary-500"
+                          }`} />
+                          <div className="min-w-0 flex-1">
+                            <p className={`text-sm truncate ${n.is_read ? "text-gray-600" : "font-semibold text-gray-900"}`}>
+                              {n.title}
+                            </p>
+                            {n.body && (
+                              <p className="mt-0.5 text-xs text-gray-500 line-clamp-2">{n.body}</p>
+                            )}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="border-t border-gray-100 p-2">
+                <Link
+                  href="/notifications"
+                  onClick={() => setNotifOpen(false)}
+                  className="flex items-center justify-center gap-1 rounded-lg px-3 py-2 text-xs font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+                >
+                  Voir toutes les notifications
+                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
 
         <Link
           href="/parametres"
@@ -116,7 +242,7 @@ export function Header() {
             <div className="absolute right-0 top-10 z-50 w-56 rounded-xl border border-gray-200 bg-white shadow-lg">
               <div className="border-b border-gray-100 px-4 py-3">
                 <p className="text-sm font-medium text-gray-900">
-                  Utilisateur
+                  {profile?.name ?? "Utilisateur"}
                 </p>
               </div>
               <div className="p-1.5">

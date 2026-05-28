@@ -1,6 +1,7 @@
 import { z } from "zod"
 
 export const onboardingSchema = z.object({
+  name: z.string().min(1, "Le prénom est requis").max(100, "Prénom trop long"),
   age: z.number().min(12, "Âge minimum : 12 ans").max(120, "Âge maximum : 120 ans"),
   gender: z.enum(["MALE", "FEMALE"]),
   weightKg: z.number().min(20, "Poids minimum : 20 kg").max(400, "Poids maximum : 400 kg"),
@@ -22,6 +23,7 @@ export const weightLogSchema = z.object({
 })
 
 export const profileUpdateSchema = z.object({
+  name: z.string().min(1).max(100).optional(),
   current_weight_kg: z.number().min(20).max(400).optional(),
   goal: z.enum(["LOSE_FAT", "GAIN_MUSCLE", "MAINTENANCE"]).optional(),
   activity_level: z.enum(["SEDENTARY", "LIGHT", "MODERATE", "ACTIVE", "VERY_ACTIVE"]).optional(),

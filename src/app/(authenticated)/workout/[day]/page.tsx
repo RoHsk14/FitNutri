@@ -1,4 +1,4 @@
-import { getCurrentProfile, getWeeklyWorkout, getWeeklyCompletions, toggleExerciseCompletion } from "@/lib/actions"
+import { getWorkoutPageData } from "@/lib/actions"
 import { getWarmUp, getWarmUpType, type WarmUpExercise } from "@/lib/warmup"
 import Link from "next/link"
 import { DayDetailClient } from "./DayDetailClient"
@@ -39,11 +39,7 @@ export default async function DayDetailPage({ params }: { params: { day: string 
     )
   }
 
-  const [profile, weekly, completions] = await Promise.all([
-    getCurrentProfile(),
-    getWeeklyWorkout(),
-    getWeeklyCompletions(),
-  ])
+  const { profile, weekly, completions } = await getWorkoutPageData()
 
   if (!profile || !weekly) {
     return (

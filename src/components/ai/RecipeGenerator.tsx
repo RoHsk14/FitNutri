@@ -49,7 +49,7 @@ export function RecipeGenerator() {
               <select
                 value={mealType}
                 onChange={(e) => setMealType(e.target.value)}
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900"
               >
                 <option value="petit-déjeuner">Petit-déjeuner</option>
                 <option value="déjeuner">Déjeuner</option>
@@ -63,7 +63,7 @@ export function RecipeGenerator() {
                 value={preferences}
                 onChange={(e) => setPreferences(e.target.value)}
                 placeholder="ex: j'adore le poulet, sans gluten"
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm"
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900"
               />
             </div>
           </>
@@ -75,7 +75,7 @@ export function RecipeGenerator() {
               onChange={(e) => setIngredients(e.target.value)}
               placeholder="ex: poulet, riz, brocoli, œufs, tomates"
               rows={3}
-              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm"
+              className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900"
             />
           </div>
         )}

@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+import { getSupabaseServerClient, getSupabaseReadonlyClient } from "./supabase-server"
 import { getSupabaseAdmin, ensureBucket } from "./supabase-admin"
 import { calculateNutrition, getWaterRecommendation, estimateDuration } from "./calculations"
 import { onboardingSchema, weightLogSchema, profileUpdateSchema } from "./validation"
@@ -10,12 +10,32 @@ import { analyzeGoalDescription } from "./goal-adapter"
 import { analyzePhysiqueWithGemini, generateDailyCoachingMessage, generateRecipeWithGemini, suggestMealFromIngredients, analyzeNutritionalGapsWithGemini, generateCustomWorkoutWithGemini } from "./gemini"
 import type { OnboardingData } from "./types"
 
-// ─── PROFIL ───────────────────────────────────────────
+// ─── AUTH ────────────────────────────────────────────
 
-export async function clearSession() {
-  const cookieStore = cookies()
-  cookieStore.delete("fit_user_id")
+export async function signOutAction() {
+  const supabase = await getSupabaseServerClient()
+  await supabase.auth.signOut()
 }
+
+async function getAuthUserId() {
+  const supabase = await getSupabaseReadonlyClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  return user?.id ?? null
+}
+
+export async function getCurrentProfile() {
+  const authUserId = await getAuthUserId()
+  if (!authUserId) return null
+  const supabase = getSupabaseAdmin()
+  const { data } = await supabase
+    .from("fit_user_profiles")
+    .select("*")
+    .eq("clerk_user_id", authUserId)
+    .maybeSingle()
+  return data
+}
+
+// ─── PROFIL ───────────────────────────────────────────
 
 export async function submitOnboarding(data: OnboardingData) {
   const parsed = onboardingSchema.safeParse(data)
@@ -23,6 +43,9 @@ export async function submitOnboarding(data: OnboardingData) {
     const firstError = parsed.error.errors[0]
     throw new Error(firstError?.message ?? "Données invalides")
   }
+
+  const authUserId = await getAuthUserId()
+  if (!authUserId) throw new Error("Vous devez être connecté")
 
   const supabase = getSupabaseAdmin()
   const result = calculateNutrition(data)
@@ -60,11 +83,10 @@ export async function submitOnboarding(data: OnboardingData) {
 
   const finalWeeks = Math.round(duration.weeks * physiqueAdjustment)
 
-  const clerkUserId = crypto.randomUUID()
-
   const { error: profileError } = await supabase.from("fit_user_profiles").upsert(
     {
-      clerk_user_id: clerkUserId,
+      clerk_user_id: authUserId,
+      name: data.name ?? null,
       age: data.age,
       gender: data.gender,
       current_weight_kg: data.weightKg,
@@ -90,20 +112,11 @@ export async function submitOnboarding(data: OnboardingData) {
     throw new Error("Impossible de sauvegarder le profil")
   }
 
-  const cookieStore = cookies()
-  cookieStore.set("fit_user_id", clerkUserId, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 365,
-    path: "/",
-  })
-
   // Récupérer l'ID du profil pour la suite
   const { data: profile, error: fetchError } = await supabase
     .from("fit_user_profiles")
-    .select("*")
-    .eq("clerk_user_id", clerkUserId)
+    .select("id")
+    .eq("clerk_user_id", authUserId)
     .single()
 
   if (fetchError) throw new Error("Impossible de recuperer le profil")
@@ -111,6 +124,7 @@ export async function submitOnboarding(data: OnboardingData) {
   // Générer automatiquement le plan d'entraînement
   try {
     await generateWorkoutPlan(profile.id, data.goal, data.activityLevel, data.gender, data.goalDescription)
+    await createNotification(profile.id, "Programme d'entraînement prêt !", "Votre programme personnalisé a été généré avec succès.", "/workout")
   } catch (e) {
     console.error("Erreur génération plan entraînement:", e)
   }
@@ -118,6 +132,7 @@ export async function submitOnboarding(data: OnboardingData) {
   // Générer le plan nutritionnel
   try {
     await generateNutritionPlan(profile.id, result, data.mealsPerDay, data.dietaryRestrictions)
+    await createNotification(profile.id, "Plan nutritionnel prêt !", "Vos objectifs caloriques et macronutriments sont calculés.", "/nutrition")
   } catch (e) {
     console.error("Erreur génération plan nutrition:", e)
   }
@@ -125,298 +140,38 @@ export async function submitOnboarding(data: OnboardingData) {
   return profile
 }
 
-// ─── UPLOAD IMAGE ────────────────────────────────────────
-
-export async function uploadImage(formData: FormData): Promise<string> {
-  const file = formData.get("file") as File
-  if (!file) throw new Error("Aucun fichier fourni")
-
-  const profile = await getCurrentProfile()
-  if (!profile) throw new Error("Profil introuvable")
-
-  await ensureBucket()
+export async function regenerateWorkoutPlan() {
+  const authUserId = await getAuthUserId()
+  if (!authUserId) throw new Error("Vous devez être connecté")
 
   const supabase = getSupabaseAdmin()
-  const ext = file.name.split(".").pop() ?? "jpg"
-  const filePath = `${profile.id}/${crypto.randomUUID()}.${ext}`
 
-  const { error } = await supabase.storage
-    .from("fit-physique-images")
-    .upload(filePath, file, { upsert: false })
-
-  if (error) throw new Error("Impossible d'uploader l'image")
-
-  const { data: publicUrl } = supabase.storage
-    .from("fit-physique-images")
-    .getPublicUrl(filePath)
-
-  return publicUrl.publicUrl
-}
-
-export async function getCurrentProfile() {
-  const cookieStore = cookies()
-  const clerkUserId = cookieStore.get("fit_user_id")?.value
-  if (!clerkUserId) return null
-
-  const supabase = getSupabaseAdmin()
-  const { data, error } = await supabase
+  const { data: prof, error: profError } = await supabase
     .from("fit_user_profiles")
-    .select("*")
-    .eq("clerk_user_id", clerkUserId)
+    .select("id, goal, activity_level, gender, goal_description")
+    .eq("clerk_user_id", authUserId)
     .single()
 
-  if (error) {
-    if (error.code === "PGRST116") return null
-    return null
-  }
-  return data
-}
+  if (profError || !prof) throw new Error("Profil introuvable")
 
-// ─── PLAN NUTRITIONNEL ───────────────────────────────
+  // Supprimer l'ancien plan pour éviter les conflits .single()
+  const { data: oldPlans } = await supabase
+    .from("fit_workout_plans")
+    .select("id")
+    .eq("user_profile_id", prof.id)
 
-/** Distribution macro par repas selon mealsPerDay */
-const MEAL_DISTRIBUTION: Record<number, { ratio: number; label: string }[]> = {
-  3: [
-    { ratio: 0.30, label: "Petit-déjeuner" },
-    { ratio: 0.40, label: "Déjeuner" },
-    { ratio: 0.30, label: "Dîner" },
-  ],
-  4: [
-    { ratio: 0.25, label: "Petit-déjeuner" },
-    { ratio: 0.35, label: "Déjeuner" },
-    { ratio: 0.15, label: "Collation" },
-    { ratio: 0.25, label: "Dîner" },
-  ],
-  5: [
-    { ratio: 0.25, label: "Petit-déjeuner" },
-    { ratio: 0.10, label: "Collation matin" },
-    { ratio: 0.30, label: "Déjeuner" },
-    { ratio: 0.15, label: "Collation après-midi" },
-    { ratio: 0.20, label: "Dîner" },
-  ],
-  6: [
-    { ratio: 0.20, label: "Petit-déjeuner" },
-    { ratio: 0.10, label: "Collation matin" },
-    { ratio: 0.25, label: "Déjeuner" },
-    { ratio: 0.10, label: "Collation après-midi" },
-    { ratio: 0.20, label: "Dîner" },
-    { ratio: 0.15, label: "Collation soir" },
-  ],
-}
-
-export interface MealPlanItem {
-  meal_number: number
-  label: string
-  calories_target: number
-  protein_target: number
-  carbs_target: number
-  fat_target: number
-}
-
-export async function generateNutritionPlan(
-  profileId: string,
-  macros: { targetCalories: number; proteinG: number; carbsG: number; fatG: number },
-  mealsPerDay: number,
-  restrictions?: string[],
-) {
-  const supabase = getSupabaseAdmin()
-  const dist = MEAL_DISTRIBUTION[mealsPerDay] ?? MEAL_DISTRIBUTION[3]
-
-  const planItems: MealPlanItem[] = dist.map((m, i) => ({
-    meal_number: i + 1,
-    label: m.label,
-    calories_target: Math.round(macros.targetCalories * m.ratio),
-    protein_target: Math.round(macros.proteinG * m.ratio),
-    carbs_target: Math.round(macros.carbsG * m.ratio),
-    fat_target: Math.round(macros.fatG * m.ratio),
-  }))
-
-  // Supprimer l'ancien plan s'il existe (un par profil)
-  await supabase.from("fit_nutrition_plans").delete().eq("user_profile_id", profileId)
-
-  // Créer le plan
-  const { data: plan, error: planError } = await supabase
-    .from("fit_nutrition_plans")
-    .insert({
-      user_profile_id: profileId,
-      meals_per_day: mealsPerDay,
-      total_calories: macros.targetCalories,
-      protein_g: macros.proteinG,
-      carbs_g: macros.carbsG,
-      fat_g: macros.fatG,
-    })
-    .select()
-    .single()
-
-  if (planError) {
-    console.error("Erreur création plan nutrition:", planError)
-    return planItems
+  if (oldPlans && oldPlans.length > 0) {
+    const ids = oldPlans.map(p => p.id)
+    await supabase.from("fit_workout_sessions").delete().in("workout_plan_id", ids)
+    await supabase.from("fit_workout_plans").delete().in("id", ids)
   }
 
-  // Suggérer des aliments pour chaque repas (basé sur les plans Clean Bulk M&S)
-  const { data: foods } = await supabase.from("fit_food_items").select("*")
+  await generateWorkoutPlan(prof.id, prof.goal, prof.activity_level, prof.gender, prof.goal_description)
 
-  if (foods && plan) {
-    const suggestions = getMealSuggestions(planItems, foods as any[], restrictions)
+  await createNotification(prof.id, "Programme régénéré !", "Votre programme d'entraînement a été mis à jour.", "/workout")
 
-    if (suggestions.length > 0) {
-      // Nettoyer les anciennes suggestions
-      await supabase.from("fit_meal_food_items").delete().eq("nutrition_plan_id", plan.id)
-
-      const inserts = suggestions.map((s) => ({
-        nutrition_plan_id: plan.id,
-        food_item_id: s.food_item_id,
-        meal_number: s.meal_number,
-        quantity_g: s.quantity_g,
-      }))
-
-      await supabase.from("fit_meal_food_items").insert(inserts)
-    }
-  }
-
-  return planItems
+  return { success: true }
 }
-
-interface FoodSuggestion {
-  food_item_id: string
-  meal_number: number
-  quantity_g: number
-}
-
-/** Catégories d'aliments appropriées par type de repas */
-const MEAL_FOOD_MAP: Record<number, { protein: string[]; carbs: string[]; fats: string[] }> = {
-  1: {  // Petit-déjeuner
-    protein: ["Œufs", "Produits laitiers", "Compléments"],
-    carbs: ["Céréales", "Fruits"],
-    fats: ["Olégineux"],
-  },
-  2: {  // Collation matin
-    protein: ["Produits laitiers", "Compléments"],
-    carbs: ["Fruits", "Céréales"],
-    fats: ["Olégineux"],
-  },
-  3: {  // Déjeuner
-    protein: ["Viandes", "Poissons", "Œufs", "Légumineuses"],
-    carbs: ["Féculents", "Légumineuses", "Céréales"],
-    fats: ["Matières grasses", "Olégineux", "Légumes"],
-  },
-  4: {  // Collation après-midi
-    protein: ["Compléments", "Produits laitiers", "Viandes"],
-    carbs: ["Fruits", "Céréales"],
-    fats: ["Olégineux"],
-  },
-  5: {  // Dîner
-    protein: ["Viandes", "Poissons", "Œufs", "Légumineuses"],
-    carbs: ["Féculents", "Légumes", "Légumineuses"],
-    fats: ["Matières grasses", "Olégineux"],
-  },
-  6: {  // Collation soir
-    protein: ["Produits laitiers", "Compléments"],
-    carbs: ["Fruits", "Céréales"],
-    fats: ["Olégineux"],
-  },
-}
-
-function isExcluded(f: any, vegan: boolean, veggie: boolean, gf: boolean, lf: boolean): boolean {
-  if (vegan && (f.category === "Viandes" || f.category === "Poissons" || f.category === "Œufs" || f.category === "Produits laitiers")) return true
-  if (!vegan && veggie && (f.category === "Viandes" || f.category === "Poissons")) return true
-  if (gf && f.name.match(/blé|pain|pâtes|farine|seigle|orge/i)) return true
-  if (lf && f.category === "Produits laitiers") return true
-  return false
-}
-
-function pickFood(foods: any[], candidates: any[], mealNum: number): any | null {
-  if (candidates.length === 0) return null
-  // Variation basée sur le numéro du repas + date pour ne pas toujours proposer le même
-  const daySeed = new Date().getDate()
-  const idx = (daySeed + mealNum * 7 + candidates.length) % candidates.length
-  return candidates[idx]
-}
-
-function getMealSuggestions(
-  planItems: MealPlanItem[],
-  foods: any[],
-  restrictions?: string[],
-): FoodSuggestion[] {
-  const suggestions: FoodSuggestion[] = []
-
-  const isVegan = restrictions?.includes("VEGAN") ?? false
-  const isVeggie = isVegan || (restrictions?.includes("VEGETARIAN") ?? false)
-  const isGF = restrictions?.includes("GLUTEN_FREE") ?? false
-  const isLF = restrictions?.includes("LACTOSE_FREE") ?? false
-
-  // Filtrer une fois pour tous les repas
-  const validFoods = foods.filter((f: any) => !isExcluded(f, isVegan, isVeggie, isGF, isLF))
-
-  for (const meal of planItems) {
-    const foodMap = MEAL_FOOD_MAP[meal.meal_number] ?? MEAL_FOOD_MAP[3]
-    const mealNum = meal.meal_number
-
-    // 1. Source de protéines
-    const proteinCandidates = validFoods.filter((f: any) =>
-      foodMap.protein.includes(f.category) &&
-      f.protein_per_100g > (mealNum === 1 ? 8 : 15)
-    )
-    const proteinFood = pickFood(validFoods, proteinCandidates, mealNum)
-    if (!proteinFood) continue
-
-    // 2. Source de glucides
-    const carbCandidates = validFoods.filter((f: any) =>
-      foodMap.carbs.includes(f.category) &&
-      f.carbs_per_100g > 15 && f.fat_per_100g < 10
-    )
-    const carbFood = pickFood(validFoods, carbCandidates, mealNum + 1)
-
-    // 3. Source de lipides (si repas avec assez de gras)
-    const fatCandidates = validFoods.filter((f: any) =>
-      foodMap.fats.includes(f.category) &&
-      f.fat_per_100g > 30
-    )
-    const fatFood = meal.fat_target > 8 ? pickFood(validFoods, fatCandidates, mealNum + 2) : null
-
-    // Quantité protéines : viser le target protéines
-    const proteinQty = Math.min(Math.max(
-      Math.round((meal.protein_target / proteinFood.protein_per_100g) * 100 / 10) * 10,
-      30
-    ), 300)
-
-    suggestions.push({
-      food_item_id: proteinFood.id,
-      meal_number: mealNum,
-      quantity_g: proteinQty,
-    })
-
-    // Quantité glucides : viser ~60% du target carbs
-    if (carbFood) {
-      const carbQty = Math.min(Math.max(
-        Math.round((meal.carbs_target * 0.6 / carbFood.carbs_per_100g) * 100 / 10) * 10,
-        30
-      ), 300)
-      suggestions.push({
-        food_item_id: carbFood.id,
-        meal_number: mealNum,
-        quantity_g: carbQty,
-      })
-    }
-
-    // Quantité lipides : compléter les besoins
-    if (fatFood) {
-      const fatQty = Math.min(Math.max(
-        Math.round((meal.fat_target * 0.3 / fatFood.fat_per_100g) * 100 / 5) * 5,
-        10
-      ), 50)
-      suggestions.push({
-        food_item_id: fatFood.id,
-        meal_number: mealNum,
-        quantity_g: fatQty,
-      })
-    }
-  }
-
-  return suggestions
-}
-
-// ─── PLAN D'ENTRAÎNEMENT ─────────────────────────────
 
 export async function generateWorkoutPlan(
   userProfileId: string,
@@ -693,7 +448,7 @@ export async function getCommonFoods() {
   const supabase = getSupabaseAdmin()
   const { data } = await supabase
     .from("fit_food_items")
-    .select("*")
+    .select("id, name, category, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g")
     .limit(30)
   return data ?? []
 }
@@ -768,6 +523,13 @@ export async function getDailyMeals(logDate?: string) {
   )
 
   return { meals, totals }
+}
+
+const MEAL_DISTRIBUTION: Record<number, { label: string; ratio: number }[]> = {
+  2: [{ label: "Repas 1", ratio: 0.5 }, { label: "Repas 2", ratio: 0.5 }],
+  3: [{ label: "Petit-déjeuner", ratio: 0.3 }, { label: "Déjeuner", ratio: 0.4 }, { label: "Dîner", ratio: 0.3 }],
+  4: [{ label: "Petit-déjeuner", ratio: 0.25 }, { label: "Déjeuner", ratio: 0.3 }, { label: "Collation", ratio: 0.15 }, { label: "Dîner", ratio: 0.3 }],
+  5: [{ label: "Petit-déjeuner", ratio: 0.2 }, { label: "Collation", ratio: 0.15 }, { label: "Déjeuner", ratio: 0.3 }, { label: "Collation", ratio: 0.1 }, { label: "Dîner", ratio: 0.25 }],
 }
 
 export async function getNutritionPlan() {
@@ -994,7 +756,7 @@ export async function suggestMeals() {
   // Récupérer les aliments
   const { data: foods } = await supabase
     .from("fit_food_items")
-    .select("*")
+    .select("id, name, category, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g")
     .limit(50)
 
   if (!foods) return []
@@ -1186,6 +948,157 @@ export async function getWorkoutHistory(limitDays = 90) {
     .map(([date, data]) => ({ date, ...data }))
 }
 
+// ─── COMPOSITE DATA FETCHERS (pages) ────────────────
+
+export async function getDashboardData() {
+  const profile = await getCurrentProfile()
+  if (!profile) return { profile: null, todayWorkout: null, weekly: null, dailyMeals: { meals: [], totals: { calories: 0, protein: 0, carbs: 0, fat: 0 } } }
+
+  const supabase = getSupabaseAdmin()
+  const today = new Date().getDay()
+  const dayOfWeek = today === 0 ? 7 : today
+  const date = new Date().toISOString().split("T")[0]
+
+  const [planResult, mealsResult] = await Promise.all([
+    supabase.from("fit_workout_plans")
+      .select("id, title, level, description, duration_weeks, goal_type")
+      .eq("user_profile_id", profile.id)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabase.from("fit_daily_meals")
+      .select("id, meal_number, quantity_g, food_item:fit_food_items(name, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g)")
+      .eq("user_profile_id", profile.id)
+      .eq("log_date", date)
+      .order("meal_number"),
+  ])
+
+  let todayWorkout = null
+  let weekly = null
+
+  if (planResult.data) {
+    const [todaySessions, allSessions] = await Promise.all([
+      supabase.from("fit_workout_sessions")
+        .select("id, sets, reps, rest_seconds, sort_order, exercise:fit_exercises(name, muscle_group, image_url, video_url, primary_muscle, synergist_muscles, mechanics, equipment)")
+        .eq("workout_plan_id", planResult.data.id)
+        .eq("day_of_week", dayOfWeek)
+        .order("sort_order"),
+      supabase.from("fit_workout_sessions")
+        .select("id, day_of_week, sort_order, sets, reps, rest_seconds, exercise:fit_exercises(name, muscle_group, image_url, video_url, primary_muscle, synergist_muscles, mechanics, equipment)")
+        .eq("workout_plan_id", planResult.data.id)
+        .order("day_of_week")
+        .order("sort_order"),
+    ])
+
+    const split = getWorkoutSplit(profile.gender, planResult.data.level)
+
+    if (todaySessions.data?.length) {
+      const dayLabel = split?.sessions.find(s => s.day === dayOfWeek)?.label ?? `Jour ${dayOfWeek}`
+      todayWorkout = { title: planResult.data.title, dayLabel, exercises: todaySessions.data }
+    }
+
+    if (allSessions.data?.length) {
+      const dayLabels: Record<number, string> = {}
+      for (const s of split?.sessions ?? []) dayLabels[s.day] = s.label
+      const byDay: Record<number, typeof allSessions.data> = {}
+      for (const s of allSessions.data) {
+        if (!byDay[s.day_of_week]) byDay[s.day_of_week] = []
+        byDay[s.day_of_week].push(s)
+      }
+      const days = Object.entries(byDay).map(([day, exs]) => ({
+        day: Number(day),
+        dayName: ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"][Number(day) - 1],
+        label: dayLabels[Number(day)] ?? null,
+        exercises: exs,
+      }))
+      weekly = { plan: planResult.data, days }
+    }
+  }
+
+  const raw = (mealsResult.data ?? []) as any[]
+  const meals = raw.map((m: any) => ({
+    id: m.id,
+    meal_number: m.meal_number,
+    quantity_g: m.quantity_g,
+    food_item: Array.isArray(m.food_item) ? m.food_item[0] : m.food_item,
+  }))
+  const totals = meals.reduce(
+    (acc, m) => {
+      const f = m.food_item ?? {}
+      const ratio = m.quantity_g / 100
+      return {
+        calories: acc.calories + Math.round((f.calories_per_100g ?? 0) * ratio),
+        protein: Math.round((acc.protein + (f.protein_per_100g ?? 0) * ratio) * 100) / 100,
+        carbs: Math.round((acc.carbs + (f.carbs_per_100g ?? 0) * ratio) * 100) / 100,
+        fat: Math.round((acc.fat + (f.fat_per_100g ?? 0) * ratio) * 100) / 100,
+      }
+    },
+    { calories: 0, protein: 0, carbs: 0, fat: 0 }
+  )
+
+  return { profile, todayWorkout, weekly, dailyMeals: { meals, totals } }
+}
+
+export async function getWorkoutPageData() {
+  const profile = await getCurrentProfile()
+  if (!profile) return { profile: null, weekly: null, completions: { daily: {} as Record<string, string[]>, weeklyCount: 0 } }
+
+  const supabase = getSupabaseAdmin()
+
+  const [planResult, completions] = await Promise.all([
+    supabase.from("fit_workout_plans")
+      .select("id, title, description, level, duration_weeks, goal_type")
+      .eq("user_profile_id", profile.id)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    getWeeklyCompletions(),
+  ])
+
+  let weekly = null
+
+  if (planResult.data) {
+    const { data: allSessions } = await supabase
+      .from("fit_workout_sessions")
+      .select("id, day_of_week, sort_order, sets, reps, rest_seconds, exercise:fit_exercises(name, muscle_group, image_url, video_url, primary_muscle, synergist_muscles, mechanics, equipment)")
+      .eq("workout_plan_id", planResult.data.id)
+      .order("day_of_week")
+      .order("sort_order")
+
+    if (allSessions?.length) {
+      const split = getWorkoutSplit(profile.gender, planResult.data.level)
+      const dayLabels: Record<number, string> = {}
+      for (const s of split?.sessions ?? []) dayLabels[s.day] = s.label
+      const byDay: Record<number, typeof allSessions> = {}
+      for (const s of allSessions) {
+        if (!byDay[s.day_of_week]) byDay[s.day_of_week] = []
+        byDay[s.day_of_week].push(s)
+      }
+      const days = Object.entries(byDay).map(([day, exs]) => ({
+        day: Number(day),
+        dayName: ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"][Number(day) - 1],
+        label: dayLabels[Number(day)] ?? null,
+        exercises: exs,
+      }))
+      weekly = { plan: planResult.data, days }
+    }
+  }
+
+  return { profile, weekly, completions }
+}
+
+export async function getNutritionPageData() {
+  const profile = await getCurrentProfile()
+  if (!profile) return { profile: null, dailyMeals: { meals: [], totals: { calories: 0, protein: 0, carbs: 0, fat: 0 } }, nutritionPlan: null }
+
+  const [dailyMeals, nutritionPlan] = await Promise.all([
+    getDailyMeals(),
+    getNutritionPlan(),
+  ])
+
+  return { profile, dailyMeals, nutritionPlan }
+}
+
 // ─── IA COACHING ──────────────────────────────────────
 
 export async function getCoachingMessage() {
@@ -1244,12 +1157,12 @@ export async function analyzeGapsAction() {
   const supabase = getSupabaseAdmin()
   const { data } = await supabase
     .from("fit_daily_meals")
-    .select("meal_type, food:fit_food_items(name, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g), quantity_g")
+    .select("meal_number, food_item:fit_food_items(name, calories_per_100g, protein_per_100g, carbs_per_100g, fat_per_100g), quantity_g")
     .eq("user_profile_id", profile.id)
-    .eq("date", today)
+    .eq("log_date", today)
 
   const meals = (data ?? []).map((d: any) => {
-    const food = Array.isArray(d.food) ? d.food[0] : d.food
+    const food = Array.isArray(d.food_item) ? d.food_item[0] : d.food_item
     const qty = d.quantity_g || 100
     return {
       name: food?.name ?? "Repas",
@@ -1285,12 +1198,288 @@ export async function generateCustomWorkoutAction(formData: FormData) {
 
 // ─── ADMIN ────────────────────────────────────────────
 
-const ADMIN_USER_ID = process.env.ADMIN_USER_ID
+// ─── SÉANCE PERSONNALISÉE ───────────────────────────
+
+export async function saveCustomSession(
+  exercises: { name: string; muscle_group: string | null; sets: number; reps: number; rest_seconds: number }[],
+) {
+  const profile = await getCurrentProfile()
+  if (!profile) throw new Error("Profil introuvable")
+
+  const supabase = getSupabaseAdmin()
+
+  const logs = exercises.map(ex => ({
+    user_profile_id: profile.id,
+    exercise_name: ex.name,
+    muscle_group: ex.muscle_group,
+    sets: ex.sets,
+    reps: ex.reps,
+    rest_seconds: ex.rest_seconds,
+  }))
+
+  const { error } = await supabase.from("fit_custom_workout_logs").insert(logs)
+  if (error) throw new Error("Impossible de sauvegarder la séance")
+
+  return { ok: true }
+}
+
+export async function getCustomWorkoutHistory(days = 90) {
+  const profile = await getCurrentProfile()
+  if (!profile) return []
+
+  const supabase = getSupabaseAdmin()
+  const since = new Date()
+  since.setDate(since.getDate() - days)
+
+  const { data } = await supabase
+    .from("fit_custom_workout_logs")
+    .select("exercise_name, muscle_group, sets, completed_at")
+    .eq("user_profile_id", profile.id)
+    .gte("completed_at", since.toISOString())
+    .order("completed_at", { ascending: false })
+
+  const grouped: Record<string, { count: number; exercises: string[] }> = {}
+  for (const c of data ?? []) {
+    const day = c.completed_at?.split("T")[0]
+    if (!day) continue
+    if (!grouped[day]) grouped[day] = { count: 0, exercises: [] }
+    grouped[day].count += c.sets
+    if (!grouped[day].exercises.includes(c.exercise_name)) {
+      grouped[day].exercises.push(c.exercise_name)
+    }
+  }
+
+  return Object.entries(grouped)
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([date, d]) => ({ date, ...d }))
+}
+
+export async function searchExercises(
+  query: string,
+  muscleGroup?: string,
+): Promise<any[]> {
+  const supabase = getSupabaseAdmin()
+  let q = supabase
+    .from("fit_exercises")
+    .select("*")
+    .limit(15)
+  if (muscleGroup) q = q.eq("muscle_group", muscleGroup)
+  if (query) q = q.ilike("name", `%${query}%`)
+  const { data } = await q
+  return data ?? []
+}
+
+export async function generateWorkoutFromMuscles(
+  targetMuscles: string[],
+  options: { sets?: number; reps?: number; restSeconds?: number } = {},
+) {
+  const supabase = getSupabaseAdmin()
+  const { sets = 3, reps = 12, restSeconds = 60 } = options
+
+  const { data } = await supabase
+    .from("fit_exercises")
+    .select("*")
+    .in("muscle_group", targetMuscles)
+
+  if (!data?.length) return { exercises: [] }
+
+  const picked: Record<string, typeof data> = {}
+  for (const ex of data) {
+    const key = ex.muscle_group
+    if (!picked[key]) picked[key] = []
+    if (picked[key].length < 3) picked[key].push(ex)
+  }
+
+  const exercises = Object.values(picked).flat().map((ex, i) => ({
+    ...ex,
+    sets,
+    reps,
+    restSeconds,
+    sortOrder: i + 1,
+  }))
+
+  return { exercises }
+}
+
+export async function getStreakData() {
+  const profile = await getCurrentProfile()
+  if (!profile) return { streak: 0, weeklyDone: 0, weeklyTarget: 3, checkedInToday: false }
+
+  const supabase = getSupabaseAdmin()
+  const today = new Date().toISOString().split("T")[0]
+  const weekAgo = new Date()
+  weekAgo.setDate(weekAgo.getDate() - 7)
+  const weekAgoStr = weekAgo.toISOString().split("T")[0]
+
+  const [completions, customLogs, checkIns] = await Promise.all([
+    supabase.from("fit_workout_completions")
+      .select("completed_at")
+      .eq("user_profile_id", profile.id)
+      .gte("completed_at", weekAgoStr),
+    supabase.from("fit_custom_workout_logs")
+      .select("completed_at")
+      .eq("user_profile_id", profile.id)
+      .gte("completed_at", weekAgoStr),
+    supabase.from("fit_daily_check_ins")
+      .select("check_in_date")
+      .eq("user_profile_id", profile.id)
+      .gte("check_in_date", weekAgoStr),
+  ])
+
+  const activeDays = new Set<string>()
+
+  for (const c of completions.data ?? []) {
+    activeDays.add(c.completed_at.split("T")[0])
+  }
+  for (const c of customLogs.data ?? []) {
+    activeDays.add(c.completed_at.split("T")[0])
+  }
+  for (const c of checkIns.data ?? []) {
+    activeDays.add(c.check_in_date)
+  }
+
+  // Weekly count (last 7 days, not counting today)
+  const weekDays = new Set<string>()
+  for (let i = 1; i <= 7; i++) {
+    const d = new Date()
+    d.setDate(d.getDate() - i)
+    weekDays.add(d.toISOString().split("T")[0])
+  }
+  const weeklyDone = Array.from(activeDays).filter(d => weekDays.has(d)).length
+
+  // Weekly target: from the user's plan or default
+  const { data: plan } = await supabase
+    .from("fit_workout_plans")
+    .select("id")
+    .eq("user_profile_id", profile.id)
+    .limit(1)
+  let weeklyTarget = 3
+  if (plan && plan.length > 0) {
+    const { data: sessions } = await supabase
+      .from("fit_workout_sessions")
+      .select("day_of_week")
+      .eq("workout_plan_id", plan[0].id)
+    if (sessions && sessions.length > 0) {
+      weeklyTarget = new Set(sessions.map(s => s.day_of_week)).size
+    }
+  }
+
+  // Streak: walk backwards from yesterday counting consecutive active days
+  let streak = 0
+  const todayActive = activeDays.has(today)
+  const startDate = new Date()
+  if (todayActive) {
+    // include today in streak
+    startDate.setDate(startDate.getDate() + 1) // start checking from tomorrow so today gets counted
+  }
+  for (let i = 1; ; i++) {
+    const d = new Date()
+    d.setDate(d.getDate() - i)
+    const key = d.toISOString().split("T")[0]
+    if (activeDays.has(key)) {
+      streak++
+    } else {
+      break
+    }
+  }
+  if (todayActive) streak++
+
+  return {
+    streak,
+    weeklyDone,
+    weeklyTarget: Math.max(weeklyTarget, 1),
+    checkedInToday: checkIns.data?.some(c => c.check_in_date === today) ?? false,
+  }
+}
+
+export async function dailyCheckIn() {
+  const profile = await getCurrentProfile()
+  if (!profile) throw new Error("Profil introuvable")
+
+  const supabase = getSupabaseAdmin()
+  const today = new Date().toISOString().split("T")[0]
+
+  const { error } = await supabase.from("fit_daily_check_ins").insert({
+    user_profile_id: profile.id,
+    check_in_date: today,
+  })
+  if (error && error.code !== "23505") throw error
+  return { ok: true }
+}
+
+// ─── NOTIFICATIONS ────────────────────────────────────
+
+export async function createNotification(
+  profileId: string,
+  title: string,
+  body?: string,
+  link?: string,
+) {
+  const supabase = getSupabaseAdmin()
+  await supabase.from("fit_notifications").insert({
+    user_profile_id: profileId,
+    title,
+    body,
+    link,
+  })
+}
+
+export async function getNotifications(limit = 50) {
+  const profile = await getCurrentProfile()
+  if (!profile) return []
+
+  const supabase = getSupabaseAdmin()
+  const { data } = await supabase
+    .from("fit_notifications")
+    .select("id, title, body, link, is_read, created_at")
+    .eq("user_profile_id", profile.id)
+    .order("created_at", { ascending: false })
+    .limit(limit)
+
+  return data ?? []
+}
+
+export async function getUnreadNotificationCount() {
+  const profile = await getCurrentProfile()
+  if (!profile) return 0
+
+  const supabase = getSupabaseAdmin()
+  const { count } = await supabase
+    .from("fit_notifications")
+    .select("*", { count: "exact", head: true })
+    .eq("user_profile_id", profile.id)
+    .eq("is_read", false)
+
+  return count ?? 0
+}
+
+export async function markNotificationRead(id: string) {
+  const profile = await getCurrentProfile()
+  if (!profile) return
+
+  const supabase = getSupabaseAdmin()
+  await supabase
+    .from("fit_notifications")
+    .update({ is_read: true })
+    .eq("id", id)
+    .eq("user_profile_id", profile.id)
+}
+
+export async function markAllNotificationsRead() {
+  const profile = await getCurrentProfile()
+  if (!profile) return
+
+  const supabase = getSupabaseAdmin()
+  await supabase
+    .from("fit_notifications")
+    .update({ is_read: true })
+    .eq("user_profile_id", profile.id)
+    .eq("is_read", false)
+}
 
 export async function isAdmin(): Promise<boolean> {
-  if (!ADMIN_USER_ID) return false
   const profile = await getCurrentProfile()
-  return profile?.id === ADMIN_USER_ID
+  return profile?.is_admin === true
 }
 
 export async function getAdminStats() {
@@ -1306,7 +1495,7 @@ export async function getAdminStats() {
     { count: totalWeightLogs },
   ] = await Promise.all([
     supabase.from("fit_user_profiles").select("*", { count: "exact", head: true }),
-    supabase.from("fit_user_profiles").select("*", { count: "exact", head: true }).not("workout_plan_id", "is", null),
+    supabase.from("fit_workout_plans").select("user_profile_id", { count: "exact", head: true }).not("user_profile_id", "is", null),
     supabase.from("fit_workout_plans").select("*", { count: "exact", head: true }),
     supabase.from("fit_workout_sessions").select("*", { count: "exact", head: true }),
     supabase.from("fit_workout_completions").select("*", { count: "exact", head: true }),
@@ -1320,12 +1509,12 @@ export async function getAdminStats() {
     .order("created_at", { ascending: false })
     .limit(10)
 
-  const { data: goalBreakdown } = await supabase
+  const goalCounts: Record<string, number> = { LOSE_FAT: 0, GAIN_MUSCLE: 0, MAINTENANCE: 0 }
+  const { data: goalRows } = await supabase
     .from("fit_user_profiles")
     .select("goal")
-
-  const goalCounts: Record<string, number> = {}
-  for (const u of goalBreakdown ?? []) {
+    .in("goal", ["LOSE_FAT", "GAIN_MUSCLE", "MAINTENANCE"])
+  for (const u of goalRows ?? []) {
     goalCounts[u.goal] = (goalCounts[u.goal] ?? 0) + 1
   }
 

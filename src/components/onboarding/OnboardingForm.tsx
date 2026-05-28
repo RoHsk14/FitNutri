@@ -19,6 +19,7 @@ export function OnboardingForm() {
   const [step, setStep] = useState(0)
   const [pending, startTransition] = useTransition()
   const [data, setData] = useState<OnboardingData>({
+    name: "",
     age: 25,
     gender: "MALE",
     weightKg: 70,

@@ -67,7 +67,7 @@ export function ProfileEditor({ profile }: { profile: any }) {
               step="0.1"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              className="flex-1 rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:outline-none"
               placeholder="ex. 72.5"
             />
             <Button size="sm" onClick={handleWeight} disabled={saving}>
@@ -82,7 +82,7 @@ export function ProfileEditor({ profile }: { profile: any }) {
           <select
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
-            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:outline-none"
           >
             {GOAL_OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>{o.label}</option>
@@ -96,7 +96,7 @@ export function ProfileEditor({ profile }: { profile: any }) {
           <select
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
-            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:outline-none"
           >
             {ACTIVITY_OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>{o.label}</option>

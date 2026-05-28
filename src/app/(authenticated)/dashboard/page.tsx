@@ -1,7 +1,7 @@
-import { StatsCard, MacroProgress, CalorieRing, WeekOverview, WorkoutDay, MealSuggestions, WaterTracker } from "@/components/dashboard"
+import { StatsCard, MacroProgress, CalorieRing, WeekOverview, WorkoutDay, WaterTracker, RegenerateProgramButton, WelcomeBackAnimation, CollapsibleCard, StreakCard, DailyObjective } from "@/components/dashboard"
 import { CoachingCard } from "@/components/ai/CoachingCard"
 import { Card } from "@/components/ui"
-import { getCurrentProfile, getTodaysWorkout, getWeeklyWorkout, getDailyMeals } from "@/lib/actions"
+import { getDashboardData } from "@/lib/actions"
 import { calculateBMI } from "@/lib/calculations"
 import type { Database } from "@/lib/database.types"
 
@@ -18,18 +18,16 @@ const GOAL_LABELS: Record<string, string> = {
 }
 
 export default async function DashboardPage() {
-  const profile: Profile | null = await getCurrentProfile()
-  const todayWorkout = await getTodaysWorkout()
-  const weekly = await getWeeklyWorkout()
-  const dailyMeals = await getDailyMeals()
+  const { profile, todayWorkout, weekly, dailyMeals } = await getDashboardData()
 
   return (
     <div className="space-y-6">
+      <WelcomeBackAnimation name={profile?.name} />
       {/* HEADER */}
       <div className="flex items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900 sm:text-2xl">
-            Bonjour {profile ? "👋" : "et bienvenue !"}
+            Bonjour {profile?.name ?? (profile ? "👋" : "et bienvenue !")}
           </h1>
           <p className="mt-0.5 text-xs text-gray-500 sm:text-sm">
             {jours[today.getDay()]} {today.getDate()} {mois[today.getMonth()]} {today.getFullYear()}
@@ -86,7 +84,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* AUJOURD'HUI : Workout + Meals */}
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start">
         {/* Séance du jour */}
         <Card>
           <div className="flex items-center justify-between mb-4">
@@ -98,14 +96,28 @@ export default async function DashboardPage() {
             )}
           </div>
           {profile ? (
-            <WorkoutDay workout={todayWorkout ? { ...todayWorkout, exercises: todayWorkout.exercises as any } : null} />
+            weekly ? (
+              <CollapsibleCard href="/workout" label="Voir ma semaine">
+                <WorkoutDay workout={todayWorkout ? { ...todayWorkout, exercises: todayWorkout.exercises as any } : null} />
+              </CollapsibleCard>
+            ) : (
+              <div className="space-y-3">
+                <p className="text-sm text-gray-500">Le programme n&apos;a pas pu être généré.</p>
+                <RegenerateProgramButton />
+              </div>
+            )
           ) : (
             <p className="text-sm text-gray-500">Complétez le questionnaire pour générer votre séance.</p>
           )}
         </Card>
 
-        {/* Suggestions repas IA */}
-        {profile && <MealSuggestions />}
+        {/* Série / Streak + Objectif du jour */}
+        {profile && (
+          <div className="space-y-4">
+            <StreakCard />
+            <DailyObjective />
+          </div>
+        )}
 
         {/* Repas du jour */}
         <Card>
@@ -118,36 +130,38 @@ export default async function DashboardPage() {
             )}
           </div>
           {profile ? (
-            <div className="space-y-3">
-              {dailyMeals.meals.length === 0 ? (
-                <p className="text-sm text-gray-500">Aucun repas enregistré aujourd&apos;hui.</p>
-              ) : (
-                (() => {
-                  const grouped: Record<number, typeof dailyMeals.meals> = {}
-                  dailyMeals.meals.forEach((m: any) => {
-                    if (!grouped[m.meal_number]) grouped[m.meal_number] = []
-                    grouped[m.meal_number].push(m)
-                  })
-                  return Object.entries(grouped).slice(0, 4).map(([num, items]) => (
-                    <div key={num} className="rounded-lg border border-gray-100 bg-gray-50 p-3">
-                      <p className="text-xs font-semibold text-gray-500 mb-1">Repas {num}</p>
-                      {items.map((m: any) => (
-                        <div key={m.id} className="flex justify-between text-sm text-gray-700 py-0.5">
-                          <span>{m.food_item.name} ({m.quantity_g}g)</span>
-                          <span className="text-gray-400">{Math.round((m.food_item.calories_per_100g * m.quantity_g) / 100)} kcal</span>
-                        </div>
-                      ))}
-                    </div>
-                  ))
-                })()
-              )}
-              <a
-                href="/nutrition"
-                className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700"
-              >
-                Ajouter un repas →
-              </a>
-            </div>
+            <CollapsibleCard href="/nutrition" label="Voir tous mes repas">
+              <div className="space-y-3">
+                {dailyMeals.meals.length === 0 ? (
+                  <p className="text-sm text-gray-500">Aucun repas enregistré aujourd&apos;hui.</p>
+                ) : (
+                  (() => {
+                    const grouped: Record<number, typeof dailyMeals.meals> = {}
+                    dailyMeals.meals.forEach((m: any) => {
+                      if (!grouped[m.meal_number]) grouped[m.meal_number] = []
+                      grouped[m.meal_number].push(m)
+                    })
+                    return Object.entries(grouped).slice(0, 4).map(([num, items]) => (
+                      <div key={num} className="rounded-lg border border-gray-100 bg-gray-50 p-3">
+                        <p className="text-xs font-semibold text-gray-500 mb-1">Repas {num}</p>
+                        {items.map((m: any) => (
+                          <div key={m.id} className="flex justify-between text-sm text-gray-700 py-0.5">
+                            <span>{m.food_item.name} ({m.quantity_g}g)</span>
+                            <span className="text-gray-400">{Math.round((m.food_item.calories_per_100g * m.quantity_g) / 100)} kcal</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))
+                  })()
+                )}
+                <a
+                  href="/nutrition"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700"
+                >
+                  Ajouter un repas →
+                </a>
+              </div>
+            </CollapsibleCard>
           ) : (
             <p className="text-sm text-gray-500">Vos repas apparaîtront ici.</p>
           )}

@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui"
-import { getWorkoutHistory } from "@/lib/actions"
+import { getWorkoutHistory, getCustomWorkoutHistory } from "@/lib/actions"
 
 const WEEKDAY_LABELS: Record<string, string> = {
   "1": "Lun", "2": "Mar", "3": "Mer", "4": "Jeu", "5": "Ven", "6": "Sam", "7": "Dim",
@@ -25,7 +25,30 @@ function formatDate(dateStr: string) {
 }
 
 export default async function HistoriquePage() {
-  const history = await getWorkoutHistory(90)
+  const [programHistory, customHistory] = await Promise.all([
+    getWorkoutHistory(90),
+    getCustomWorkoutHistory(90),
+  ])
+
+  // Fusionner les deux historiques par date
+  const merged: Record<string, { count: number; exercises: string[]; isCustom: boolean }> = {}
+
+  for (const day of programHistory) {
+    merged[day.date] = { count: day.count, exercises: day.exercises, isCustom: false }
+  }
+
+  for (const day of customHistory) {
+    if (merged[day.date]) {
+      merged[day.date].count += day.count
+      merged[day.date].exercises = Array.from(new Set([...merged[day.date].exercises, ...day.exercises]))
+    } else {
+      merged[day.date] = { count: day.count, exercises: day.exercises, isCustom: true }
+    }
+  }
+
+  const history = Object.entries(merged)
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([date, data]) => ({ date, ...data }))
 
   if (history.length === 0) {
     return (
@@ -53,7 +76,7 @@ export default async function HistoriquePage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Historique</h1>
-          <p className="text-sm text-gray-500">{history.length} jours · {totalSessions} exercices complétés</p>
+          <p className="text-sm text-gray-500">{history.length} jours · {totalSessions} séries complétées</p>
         </div>
       </div>
 
@@ -62,15 +85,28 @@ export default async function HistoriquePage() {
           <Card key={day.date}>
             <div className="flex items-start gap-4">
               <div className="flex flex-col items-center min-w-[48px]">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-50">
-                  <svg className="h-5 w-5 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                    <polyline points="20,6 9,17 4,12" />
-                  </svg>
+                <div className={`flex h-12 w-12 items-center justify-center rounded-full ${day.isCustom ? "bg-violet-50" : "bg-green-50"}`}>
+                  {day.isCustom ? (
+                    <svg className="h-5 w-5 text-violet-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <path d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  ) : (
+                    <svg className="h-5 w-5 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                      <polyline points="20,6 9,17 4,12" />
+                    </svg>
+                  )}
                 </div>
                 <div className="mt-1 h-full w-px bg-gray-100" />
               </div>
               <div className="flex-1 pb-4">
-                <p className="text-sm font-semibold text-gray-900">{formatDate(day.date)}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-semibold text-gray-900">{formatDate(day.date)}</p>
+                  {day.isCustom && (
+                    <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-medium text-violet-600">
+                      Personnalisée
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs text-gray-400 mb-2">{day.exercises.length} exercices · {day.count} séries</p>
                 <div className="flex flex-wrap gap-1.5">
                   {day.exercises.map((name) => (

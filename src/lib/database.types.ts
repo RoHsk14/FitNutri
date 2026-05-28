@@ -7,6 +7,8 @@ export interface Database {
         Row: {
           id: string
           clerk_user_id: string
+          name: string | null
+          is_admin: boolean
           age: number
           gender: "MALE" | "FEMALE"
           current_weight_kg: number

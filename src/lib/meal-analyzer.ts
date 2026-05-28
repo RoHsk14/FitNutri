@@ -1,6 +1,6 @@
 "use server"
 
-import { cookies } from "next/headers"
+import { getSupabaseServerClient } from "./supabase-server"
 import { analyzeMealTextWithGemini } from "./gemini"
 import { estimateMealLocally } from "./meal-estimator"
 import { getSupabaseAdmin } from "./supabase-admin"
@@ -10,13 +10,11 @@ export async function analyzeMealDescription(description: string): Promise<{
   analysis: MealAnalysis
   source: "gemini" | "local"
 } | null> {
-  // Essayer Gemini d'abord
   const geminiResult = await analyzeMealTextWithGemini(description)
   if (geminiResult) {
     return { analysis: geminiResult, source: "gemini" }
   }
 
-  // Fallback local si Gemini indisponible (quota épuisé, etc.)
   const localResult = estimateMealLocally(description)
   if (localResult) {
     return { analysis: localResult, source: "local" }
@@ -30,21 +28,21 @@ export async function logAnalyzedMeal(
   mealNumber: number,
   logDate?: string,
 ) {
-  const cookieStore = cookies()
-  const clerkUserId = cookieStore.get("fit_user_id")?.value
-  if (!clerkUserId) throw new Error("Profil introuvable")
+  const supabase = await getSupabaseServerClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error("Profil introuvable")
 
-  const supabase = getSupabaseAdmin()
+  const admin = getSupabaseAdmin()
 
-  const { data: profile } = await supabase
+  const { data: profile } = await admin
     .from("fit_user_profiles")
     .select("id")
-    .eq("clerk_user_id", clerkUserId)
+    .eq("clerk_user_id", user.id)
     .single()
 
   if (!profile) throw new Error("Profil introuvable")
 
-  const { data: existing } = await supabase
+  const { data: existing } = await admin
     .from("fit_food_items")
     .select("id")
     .eq("name", analysis.food_name)
@@ -55,7 +53,7 @@ export async function logAnalyzedMeal(
   if (existing) {
     foodItemId = existing.id
   } else {
-    const { data: newFood } = await supabase
+    const { data: newFood } = await admin
       .from("fit_food_items")
       .insert({
         name: analysis.food_name,
@@ -72,7 +70,7 @@ export async function logAnalyzedMeal(
     foodItemId = newFood.id
   }
 
-  const { error } = await supabase.from("fit_daily_meals").insert({
+  const { error } = await admin.from("fit_daily_meals").insert({
     user_profile_id: profile.id,
     food_item_id: foodItemId,
     quantity_g: analysis.quantity_g,

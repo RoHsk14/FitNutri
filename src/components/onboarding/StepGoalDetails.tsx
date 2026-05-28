@@ -59,7 +59,7 @@ export function StepGoalDetails({ data, update }: Props) {
           onChange={(e) => update({ goalDescription: e.target.value })}
           rows={3}
           maxLength={500}
-          className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none resize-none"
+          className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:outline-none resize-none"
           placeholder={`Je souhaite ${goalVerb} du poids, notamment au niveau du ventre et des cuisses...`}
         />
         <p className="mt-1 text-xs text-gray-400">
@@ -78,7 +78,7 @@ export function StepGoalDetails({ data, update }: Props) {
             step="0.1"
             value={data.targetWeightKg ?? ""}
             onChange={(e) => update({ targetWeightKg: e.target.value ? parseFloat(e.target.value) : null })}
-            className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:outline-none"
             placeholder={data.goal === "LOSE_FAT" ? "ex. 65" : "ex. 75"}
           />
           <p className="mt-1 text-xs text-gray-400">

@@ -9,6 +9,7 @@ export type WorkoutLevel = "BEGINNER" | "INTERMEDIATE" | "ADVANCED"
 export type DietaryRestriction = "VEGAN" | "VEGETARIAN" | "GLUTEN_FREE" | "LACTOSE_FREE" | "NONE"
 
 export interface OnboardingData {
+  name: string
   age: number
   gender: Gender
   weightKg: number

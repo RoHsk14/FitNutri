@@ -18,6 +18,15 @@ export function StepPhysicalInfo({ data, update }: Props) {
         </p>
       </div>
 
+      <Input
+        id="name"
+        label="Prénom"
+        type="text"
+        placeholder="Ex: Thomas"
+        value={data.name}
+        onChange={(e) => update({ name: e.target.value })}
+      />
+
       <div className="grid grid-cols-2 gap-4">
         <Input
           id="age"
@@ -32,7 +41,7 @@ export function StepPhysicalInfo({ data, update }: Props) {
         <div className="space-y-1">
           <label className="block text-sm font-medium text-gray-700">Genre</label>
           <select
-            className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 sm:text-sm"
+            className="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 sm:text-sm"
             value={data.gender}
             onChange={(e) => update({ gender: e.target.value as "MALE" | "FEMALE" })}
           >

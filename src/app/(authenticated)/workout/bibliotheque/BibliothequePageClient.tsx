@@ -76,7 +76,7 @@ export default function BibliothequePageClient({ exercises: initial }: { exercis
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Rechercher un exercice..."
-          className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-10 pr-4 text-sm focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-100"
+          className="w-full rounded-xl border border-gray-200 bg-white py-2.5 pl-10 pr-4 text-sm text-gray-900 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-100"
         />
       </div>
 

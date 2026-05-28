@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { ReactNode, useState, useEffect } from "react"
+import { ReactNode, useState, useEffect, createContext, useContext } from "react"
 import clsx from "clsx"
 
 interface SubItem {
@@ -44,7 +44,7 @@ function buildNavItems(isAdmin: boolean): NavItem[] {
       children: [
         { href: "/workout", label: "Programme" },
         { href: "/workout/bibliotheque", label: "Bibliothèque" },
-        { href: "/workout/personnalise", label: "IA Personnalisée" },
+        { href: "/workout/personnalise", label: "Séance personnalisée" },
         { href: "/workout/historique", label: "Historique" },
       ],
     },
@@ -63,6 +63,15 @@ function buildNavItems(isAdmin: boolean): NavItem[] {
       ],
     },
     {
+      href: "/notifications",
+      label: "Notifications",
+      icon: (
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+        </svg>
+      ),
+    },
+    {
       href: "/profile",
       label: "Profil",
       icon: (
@@ -77,6 +86,20 @@ function buildNavItems(isAdmin: boolean): NavItem[] {
 
 function isParentActive(item: NavItem, pathname: string): boolean {
   return pathname === item.href || pathname.startsWith(item.href + "/")
+}
+
+interface SidebarContextType {
+  mobileOpen: boolean
+  setMobileOpen: (open: boolean) => void
+}
+
+const SidebarContext = createContext<SidebarContextType>({
+  mobileOpen: false,
+  setMobileOpen: () => {},
+})
+
+export function useSidebar() {
+  return useContext(SidebarContext)
 }
 
 export function Sidebar({ children }: { children: ReactNode }) {
@@ -106,189 +129,241 @@ export function Sidebar({ children }: { children: ReactNode }) {
     setExpanded((prev) => (prev === href ? null : href))
   }
 
+  const closeMobile = () => setMobileOpen(false)
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Mobile top bar */}
-      <div className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-gray-200 bg-white px-4 lg:hidden">
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold">
-            F
-          </div>
-          <span className="text-lg font-bold text-gray-900">FitNutri</span>
-        </div>
-        <button
-          type="button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 transition-colors"
-          aria-label="Ouvrir le menu"
-        >
-          {mobileOpen ? (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          )}
-        </button>
-      </div>
-
-      {/* Mobile overlay */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside
-        className={clsx(
-          "fixed top-0 z-50 flex h-screen w-64 flex-col border-r border-gray-200 bg-white transition-transform duration-300 ease-in-out",
-          "lg:translate-x-0 lg:z-30",
-          mobileOpen ? "translate-x-0" : "-translate-x-full"
+    <SidebarContext.Provider value={{ mobileOpen, setMobileOpen }}>
+      <div className="min-h-screen bg-gray-50">
+        {/* Mobile drawer overlay */}
+        {mobileOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm lg:hidden"
+            onClick={closeMobile}
+          />
         )}
-      >
-        {/* Logo */}
-        <div className="flex h-16 items-center border-b border-gray-100 px-5">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold">
-              F
-            </div>
-            <span className="text-lg font-bold text-gray-900">FitNutri</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            className="ml-auto rounded-lg p-1 text-gray-400 hover:bg-gray-100 lg:hidden"
-            aria-label="Fermer le menu"
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 space-y-0.5 overflow-y-auto p-3 sidebar-scroll">
-          {NAV_ITEMS.map((item) => {
-            const active = isParentActive(item, pathname)
-            const isOpen = expanded === item.href
-            const hasChildren = item.children && item.children.length > 0
-
-            return (
-              <div key={item.href}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (hasChildren) {
-                      toggleExpand(item.href)
-                    } else {
-                      router.push(item.href)
-                      setMobileOpen(false)
-                    }
-                  }}
-                  className={clsx(
-                    "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors group",
-                    active && !isOpen
-                      ? "bg-primary-50 text-primary-700"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                  )}
-                >
-                  <span className={clsx(
-                    active && !isOpen ? "text-primary-600" : "text-gray-400 group-hover:text-gray-600"
-                  )}>
-                    {item.icon}
-                  </span>
-                  <span className="flex-1 text-left">{item.label}</span>
-                  {hasChildren && (
-                    <svg
-                      className={clsx(
-                        "h-3.5 w-3.5 text-gray-400 transition-transform duration-200",
-                        isOpen && "rotate-180"
-                      )}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                </button>
-
-                {hasChildren && isOpen && (
-                  <div className="ml-2 mt-0.5 space-y-0.5 border-l-2 border-primary-100 pl-3">
-                    {item.children!.map((child) => {
-                      const childActive = pathname === child.href
-                      return (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setMobileOpen(false)}
-                          className={clsx(
-                            "block rounded-lg px-3 py-2 text-sm transition-colors",
-                            childActive
-                              ? "bg-primary-50 font-medium text-primary-700"
-                              : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-                          )}
-                        >
-                          {child.label}
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
+        {/* Mobile drawer */}
+        <aside
+          className={clsx(
+            "fixed top-0 left-0 z-50 flex h-full w-72 flex-col bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden",
+            mobileOpen ? "translate-x-0" : "-translate-x-full"
+          )}
+        >
+          {/* Drawer header */}
+          <div className="flex h-14 items-center justify-between border-b border-gray-100 px-4">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold shadow-sm">
+                F
               </div>
-            )
-          })}
-        </nav>
-
-        {/* User footer */}
-        <div className="border-t border-gray-100 p-4">
-          <div className="flex items-center gap-3 rounded-lg px-3 py-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-sm font-medium text-gray-600">
-              U
+              <span className="text-base font-bold text-gray-900">FitNutri</span>
             </div>
-            <div className="flex-1 truncate">
-              <p className="text-sm font-medium text-gray-900">Utilisateur</p>
-              <p className="text-xs text-gray-500">Connecté</p>
+            <button
+              type="button"
+              onClick={closeMobile}
+              className="rounded-xl p-2 text-gray-400 hover:bg-gray-100 active:bg-gray-200 transition-colors"
+              aria-label="Fermer le menu"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+            {NAV_ITEMS.map((item) => {
+              const active = isParentActive(item, pathname)
+              const isOpen = expanded === item.href
+              const hasChildren = item.children && item.children.length > 0
+
+              return (
+                <div key={item.href}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (hasChildren) {
+                        toggleExpand(item.href)
+                      } else {
+                        router.push(item.href)
+                        closeMobile()
+                      }
+                    }}
+                    className={clsx(
+                      "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all",
+                      active && !isOpen
+                        ? "bg-primary-50 text-primary-700"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    )}
+                  >
+                    <span className={clsx(
+                      "shrink-0",
+                      active && !isOpen ? "text-primary-600" : "text-gray-400"
+                    )}>
+                      {item.icon}
+                    </span>
+                    <span className="flex-1 text-left">{item.label}</span>
+                    {hasChildren && (
+                      <svg
+                        className={clsx(
+                          "h-3.5 w-3.5 text-gray-400 transition-transform duration-200",
+                          isOpen && "rotate-180"
+                        )}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </button>
+
+                  {hasChildren && isOpen && (
+                    <div className="ml-2 mt-0.5 space-y-0.5 border-l-2 border-primary-100 pl-3">
+                      {item.children!.map((child) => {
+                        const childActive = pathname === child.href
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={closeMobile}
+                            className={clsx(
+                              "block rounded-lg px-3 py-2 text-sm transition-colors",
+                              childActive
+                                ? "bg-primary-50 font-medium text-primary-700"
+                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </nav>
+
+          {/* User footer */}
+          <div className="border-t border-gray-100 p-4">
+            <div className="flex items-center gap-3 rounded-xl bg-gray-50 px-3 py-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">
+                U
+              </div>
+              <div className="flex-1 truncate">
+                <p className="text-sm font-semibold text-gray-900">Utilisateur</p>
+                <p className="text-xs text-gray-500">Connecté</p>
+              </div>
             </div>
           </div>
+        </aside>
+
+        {/* Desktop sidebar */}
+        <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 flex-col border-r border-gray-100 bg-white shadow-sm lg:flex">
+          {/* Logo */}
+          <div className="flex h-16 items-center border-b border-gray-100 px-6">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 text-white text-sm font-bold shadow-sm">
+                F
+              </div>
+              <span className="text-lg font-bold text-gray-900">FitNutri</span>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex-1 space-y-0.5 overflow-y-auto p-4">
+            {NAV_ITEMS.map((item) => {
+              const active = isParentActive(item, pathname)
+              const isOpen = expanded === item.href
+              const hasChildren = item.children && item.children.length > 0
+
+              return (
+                <div key={item.href}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (hasChildren) {
+                        toggleExpand(item.href)
+                      } else {
+                        router.push(item.href)
+                      }
+                    }}
+                    className={clsx(
+                      "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all",
+                      active && !isOpen
+                        ? "bg-primary-50 text-primary-700"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    )}
+                  >
+                    <span className={clsx(
+                      "shrink-0",
+                      active && !isOpen ? "text-primary-600" : "text-gray-400"
+                    )}>
+                      {item.icon}
+                    </span>
+                    <span className="flex-1 text-left">{item.label}</span>
+                    {hasChildren && (
+                      <svg
+                        className={clsx(
+                          "h-3.5 w-3.5 text-gray-400 transition-transform duration-200",
+                          isOpen && "rotate-180"
+                        )}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </button>
+
+                  {hasChildren && isOpen && (
+                    <div className="ml-2 mt-0.5 space-y-0.5 border-l-2 border-primary-100 pl-3">
+                      {item.children!.map((child) => {
+                        const childActive = pathname === child.href
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={clsx(
+                              "block rounded-lg px-3 py-2 text-sm transition-colors",
+                              childActive
+                                ? "bg-primary-50 font-medium text-primary-700"
+                                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </nav>
+
+          {/* User footer */}
+          <div className="border-t border-gray-100 px-4 py-4">
+            <div className="flex items-center gap-3 rounded-xl bg-gray-50 px-3 py-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-100 text-sm font-semibold text-primary-700">
+                U
+              </div>
+              <div className="flex-1 truncate">
+                <p className="text-sm font-semibold text-gray-900">Utilisateur</p>
+                <p className="text-xs text-gray-500">Connecté</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main content */}
+        <div className="lg:ml-64">
+          {children}
         </div>
-      </aside>
-
-      {/* Mobile bottom navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around border-t border-gray-200 bg-white px-2 py-1.5 lg:hidden safe-area-bottom">
-        {NAV_ITEMS.map((item) => {
-          const active = isParentActive(item, pathname)
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={clsx(
-                "flex flex-col items-center gap-0.5 rounded-lg px-3 py-1.5 text-[10px] font-medium transition-colors",
-                active
-                  ? "text-primary-600"
-                  : "text-gray-400 hover:text-gray-600"
-              )}
-            >
-              {active ? (
-                <span className="text-primary-600">{item.icon}</span>
-              ) : (
-                <span className="text-gray-400">{item.icon}</span>
-              )}
-              {item.label}
-            </Link>
-          )
-        })}
-      </nav>
-
-      {/* Main content */}
-      <div className="flex min-h-screen flex-col pb-20 lg:ml-64 lg:pb-0">
-        {children}
       </div>
-    </div>
+    </SidebarContext.Provider>
   )
 }

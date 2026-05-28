@@ -71,7 +71,7 @@ export function QuickMealInput({ mealsPerDay, onMealAdded }: Props) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Ex: 200g de riz, 150g de poulet, brocoli vapeur"
-          className="min-h-[44px] w-full flex-1 resize-none rounded-xl border border-primary-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
+          className="min-h-[44px] w-full flex-1 resize-none rounded-xl border border-primary-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-primary-400 focus:ring-1 focus:ring-primary-400"
           rows={2}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleAnalyze() } }}
         />
@@ -81,7 +81,7 @@ export function QuickMealInput({ mealsPerDay, onMealAdded }: Props) {
         <select
           value={selectedMeal}
           onChange={(e) => setSelectedMeal(Number(e.target.value))}
-          className="rounded-lg border border-primary-200 bg-white px-3 py-1.5 text-xs"
+          className="rounded-lg border border-primary-200 bg-white px-3 py-1.5 text-xs text-gray-900"
         >
           {Array.from({ length: mealsPerDay }, (_, i) => (
             <option key={i + 1} value={i + 1}>{MEAL_NAMES[i] ?? `Repas ${i + 1}`}</option>

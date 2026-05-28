@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button, Card } from "@/components/ui"
 import { suggestMeals, logMeal } from "@/lib/actions"
 import { fmt } from "@/lib/format"
@@ -25,14 +25,22 @@ interface Suggestion {
   macros: { calories: number; protein: number; carbs: number; fat: number }
 }
 
-export function MealSuggestions() {
+export function MealSuggestions({ maxHeight, maxSuggestions = 2 }: { maxHeight?: number; maxSuggestions?: number }) {
   const [data, setData] = useState<{ suggestions: Suggestion[]; targetMeal: number } | null>(null)
   const [loading, setLoading] = useState(false)
   const [added, setAdded] = useState<Set<string>>(new Set())
+  const [overflows, setOverflows] = useState(false)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     load()
   }, [])
+
+  useEffect(() => {
+    if (contentRef.current && maxHeight) {
+      setOverflows(contentRef.current.scrollHeight > maxHeight)
+    }
+  }, [data, maxHeight])
 
   const load = async () => {
     setLoading(true)
@@ -67,54 +75,70 @@ export function MealSuggestions() {
         </button>
       </div>
 
-      <div className="space-y-3">
-        {data.suggestions.map((s, i) => (
-          <div
-            key={`${s.food_item.id}-${i}`}
-            className="rounded-lg border border-primary-100 bg-white overflow-hidden"
-          >
-            <div className="p-3">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 min-w-0 flex-wrap">
-                    <span className="truncate text-sm font-semibold text-gray-900">{s.food_item.name}</span>
-                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-500">
-                      {s.quantity_g}g
-                    </span>
-                    <span className="rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-600">
-                      {s.meal_label}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-600 mt-1">{s.reason}</p>
+      <div ref={contentRef} className="relative">
+        <div className="space-y-3" style={maxHeight && overflows ? { maxHeight } : undefined}>
+          {data.suggestions.slice(0, maxSuggestions).map((s, i) => (
+            <div
+              key={`${s.food_item.id}-${i}`}
+              className="rounded-lg border border-primary-100 bg-white overflow-hidden"
+            >
+              <div className="p-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 min-w-0 flex-wrap">
+                      <span className="truncate text-sm font-semibold text-gray-900">{s.food_item.name}</span>
+                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-500">
+                        {s.quantity_g}g
+                      </span>
+                      <span className="rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-medium text-primary-600">
+                        {s.meal_label}
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-600 mt-1">{s.reason}</p>
 
-                  {/* Mini barres macros */}
-                  <div className="flex gap-3 mt-2">
-                    <MacroMini label="Cal" value={s.macros.calories} color="bg-gray-500" />
-                    <MacroMini label="Prot" value={s.macros.protein} unit="g" color="bg-blue-500" />
-                    <MacroMini label="Gluc" value={s.macros.carbs} unit="g" color="bg-amber-500" />
-                    <MacroMini label="Lip" value={s.macros.fat} unit="g" color="bg-rose-500" />
+                    {/* Mini barres macros */}
+                    <div className="flex gap-3 mt-2">
+                      <MacroMini label="Cal" value={s.macros.calories} color="bg-gray-500" />
+                      <MacroMini label="Prot" value={s.macros.protein} unit="g" color="bg-blue-500" />
+                      <MacroMini label="Gluc" value={s.macros.carbs} unit="g" color="bg-amber-500" />
+                      <MacroMini label="Lip" value={s.macros.fat} unit="g" color="bg-rose-500" />
+                    </div>
+                    <p className="text-[10px] text-gray-400 mt-1.5 leading-relaxed">
+                      {s.macros.protein > 20 && s.macros.fat < 5 ? "Riche en protéines maigres — idéal pour la récupération musculaire" :
+                       s.macros.carbs > 40 ? "Charge en glucides — parfait avant / après sport" :
+                       s.macros.fat > 15 ? "Acides gras essentiels — bon pour l'équilibre hormonal" :
+                       "Repas équilibré pour combler vos besoins"}
+                    </p>
                   </div>
-                  <p className="text-[10px] text-gray-400 mt-1.5 leading-relaxed">
-                    {s.macros.protein > 20 && s.macros.fat < 5 ? "Riche en protéines maigres — idéal pour la récupération musculaire" :
-                     s.macros.carbs > 40 ? "Charge en glucides — parfait avant / après sport" :
-                     s.macros.fat > 15 ? "Acides gras essentiels — bon pour l'équilibre hormonal" :
-                     "Repas équilibré pour combler vos besoins"}
-                  </p>
+                  <Button
+                    size="sm"
+                    variant={added.has(s.food_item.id) ? "ghost" : "primary"}
+                    onClick={() => add(s)}
+                    disabled={added.has(s.food_item.id)}
+                    className="ml-2 shrink-0"
+                  >
+                    {added.has(s.food_item.id) ? "✓" : "+"}
+                  </Button>
                 </div>
-                <Button
-                  size="sm"
-                  variant={added.has(s.food_item.id) ? "ghost" : "primary"}
-                  onClick={() => add(s)}
-                  disabled={added.has(s.food_item.id)}
-                  className="ml-2 shrink-0"
-                >
-                  {added.has(s.food_item.id) ? "✓" : "+"}
-                </Button>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        {overflows && maxHeight && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-primary-50/30 to-transparent" />
+        )}
       </div>
+      {overflows && maxHeight && (
+        <a
+          href="/nutrition"
+          className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700"
+        >
+          Voir mes repas
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      )}
     </Card>
   )
 }

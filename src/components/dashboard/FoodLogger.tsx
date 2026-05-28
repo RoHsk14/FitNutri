@@ -107,7 +107,7 @@ export function FoodLogger({ initialMeals, totals, targetCalories, targetProtein
           <select
             value={selectedMeal}
             onChange={(e) => setSelectedMeal(Number(e.target.value))}
-            className="rounded-lg border border-gray-300 px-3 py-2 text-sm flex-1 sm:flex-none"
+            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 flex-1 sm:flex-none"
           >
             {Array.from({ length: maxMeals }, (_, i) => (
               <option key={i + 1} value={i + 1}>{MEAL_NAMES[i] ?? `Repas ${i + 1}`}</option>

@@ -5,7 +5,7 @@ import { FoodLogger, MealSuggestions, QuickMealInput } from "@/components/dashbo
 import { RecipeGenerator } from "@/components/ai/RecipeGenerator"
 import { NutritionGapsAnalyzer } from "@/components/ai/NutritionGapsAnalyzer"
 import { Card, CardHeader, CardTitle } from "@/components/ui"
-import { getCurrentProfile, getDailyMeals, getNutritionPlan } from "@/lib/actions"
+import { getNutritionPageData } from "@/lib/actions"
 import { fmt } from "@/lib/format"
 
 const MEAL_ICONS: Record<number, string> = {
@@ -21,13 +21,7 @@ export default function NutritionPage() {
   const [refreshKey, setRefreshKey] = useState(0)
 
   useEffect(() => {
-    Promise.all([
-      getCurrentProfile(),
-      getDailyMeals(),
-      getNutritionPlan(),
-    ]).then(([profile, dailyMeals, nutritionPlan]) => {
-      setData({ profile, dailyMeals, nutritionPlan })
-    })
+    getNutritionPageData().then(setData)
   }, [refreshKey])
 
   const handleMealAdded = useCallback(() => {
@@ -121,17 +115,8 @@ export default function NutritionPage() {
             </div>
           </div>
 
-          {/* Suggestions */}
-          <MealSuggestions key={refreshKey} />
-
           {/* Saisie rapide */}
           <QuickMealInput mealsPerDay={nutritionPlan.plan.meals_per_day} onMealAdded={handleMealAdded} />
-
-          {/* Assistant recettes IA */}
-          <RecipeGenerator />
-
-          {/* Analyse des gaps nutritionnels */}
-          <NutritionGapsAnalyzer />
 
           {/* Journal alimentaire */}
           <Card>
@@ -147,6 +132,11 @@ export default function NutritionPage() {
               mealsPerDay={nutritionPlan.plan.meals_per_day}
             />
           </Card>
+
+          {/* Suggestions + IA */}
+          <MealSuggestions key={refreshKey} maxSuggestions={10} />
+          <RecipeGenerator />
+          <NutritionGapsAnalyzer />
         </>
       ) : (
         <Card>

@@ -1,6 +1,23 @@
+import { getSupabaseReadonlyClient } from "@/lib/supabase-server"
+import { getCurrentProfile } from "@/lib/actions"
+import { redirect } from "next/navigation"
 import { OnboardingForm } from "@/components/onboarding"
 
-export default function OnboardingPage() {
+export default async function OnboardingPage() {
+  const supabase = await getSupabaseReadonlyClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect("/login")
+  }
+
+  const profile = await getCurrentProfile()
+
+  // Si déjà onboarding fait, rediriger vers le dashboard
+  if (profile) {
+    redirect("/dashboard")
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-6 sm:py-12">
       <div className="mx-auto max-w-3xl px-4">
